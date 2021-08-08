@@ -1,0 +1,22 @@
+.submit{
+    background-color: rgb(4, 26, 50);
+    color: rgb(255, 255, 255);
+    width: 100%;
+    border: none;
+    height: 35px;
+}
+.header1{
+    font-family: Sarpanch;
+    text-align: center;
+    color: rgb(255, 100, 0);
+    -webkit-text-stroke: 1px #041A32;
+    font-size: 35px;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-attachment: fixed;
+    background-color: #F8F8F8;
+}

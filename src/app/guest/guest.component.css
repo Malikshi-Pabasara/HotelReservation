@@ -1,0 +1,73 @@
+.nav-link {
+    padding-right: 3rem !important;
+    font-weight: bold;
+  }
+  a:hover {
+    background-color: #07325f;
+  }
+
+  button{
+      background-color: white;
+      color: black;
+      border: none;
+      box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 0%;
+  }
+  
+  .example-spacer {
+    padding-left: 3rem !important;
+  }
+
+  bar{
+    display: table-cell;
+    vertical-align: middle;
+  }
+  button:hover {
+    background-color: #07325f;
+  }
+  #btn{
+    color: #fff;
+    background-color: #FF6400;
+    box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.2);
+  }
+  #btn:hover {
+    background-color: #07325f;
+  }
+
+  .form-control me-2{
+    width: 10%;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  .header{
+    font-family: Sarpanch;
+    text-align: left;
+    color: rgb(255, 100, 0);
+    font-size: larger;
+    width: 65%;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #041A32;
+}
+#staticBackdropLabel{
+  text-align: center;
+}
+
+.form-row{
+  display: inline-block;
+  width: 222px;
+}
+.middle{
+  margin-left: 20px;
+}
+/* guest add update modal responsive*/
+@media(max-width: 576px){    
+  .form-row{
+    width: 100%;
+  }
+  .middle{
+    margin-left: 0px;
+  }
+}
+

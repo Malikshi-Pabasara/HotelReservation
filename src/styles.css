@@ -1,0 +1,72 @@
+
+.img{
+    width: 30px;
+    height: 30px;
+    position: absolute; 
+    top: 20%;
+}
+
+html, body {
+    height: 100%; 
+}
+
+body {
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+
+/* search box responsive*/
+@media(max-width: 540px){
+    .pagename{
+      display: none;
+    }
+    .input-group{
+      position: relative;
+      margin-left: auto;
+      vertical-align: middle;
+    }
+  }
+  
+  
+    /* table responsive*/
+  
+    @media(max-width: 750px){
+      .table thead{
+        display: none;
+      }
+  
+      .table, .table tbody, .table tr, .table td{
+        display: block;
+        width: 100%;
+      }
+      .table tr {
+        margin-bottom: 15px;
+      }
+      .table td{
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+      }
+      .table td::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 2;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+      }
+  
+    }
+
+    
+
+    .modal{
+      box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 0;
+    }
+
+   
+  
