@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { Guest } from './guest';
 import {GuestService} from './guest.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Validators } from '@angular/forms';
+import { Ng2SearchPipe } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-guest',
@@ -13,8 +14,8 @@ import { Validators } from '@angular/forms';
 })
 export class GuestComponent implements OnInit {
   Guestform: FormGroup;
- 
-
+  searchText: any;
+  
   guests: Guest[] = [];
   mode = 'create';
 
@@ -25,13 +26,13 @@ export class GuestComponent implements OnInit {
     public fb: FormBuilder
   ) {
     this.Guestform = this.fb.group({
-      id:[''],
-      Name: ['', Validators.required],
-      PhoneNo: ['', Validators.required, Validators.maxLength(10)],
-      DateOfBirth: ['', Validators.required],
-      IdNo: ['', Validators.required, Validators.maxLength(10)],
-      Email: ['', Validators.required, Validators.email],
-      IsActive: [''],
+      id: new FormControl(''),
+      Name: new FormControl('', Validators.required),
+      PhoneNo: new FormControl('',[ Validators.required, Validators.maxLength(10)]), 
+      DateOfBirth: new FormControl('', Validators.required),
+      IdNo: new FormControl('' , [ Validators.required, Validators.maxLength(10)]), 
+      Email: new FormControl('', [Validators.required, Validators.email]),
+      IsActive: new FormControl(''),
   })
   }
   get validation(){
@@ -67,10 +68,13 @@ export class GuestComponent implements OnInit {
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
+      this.Guestform.reset();
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      this.Guestform.reset();
       return 'by clicking on a backdrop';
     } else {
+      this.Guestform.reset();
       return `with: ${reason}`;
     }
   }
@@ -82,6 +86,7 @@ export class GuestComponent implements OnInit {
           (response) => {
             this.guests = response;
             this.router.navigate(['/guest']);
+            this.Guestform.reset();
           },
           (error) => console.log(error)
         );
@@ -89,5 +94,8 @@ export class GuestComponent implements OnInit {
       (error) => console.log(error)
     )};
 
+   
   }
+
+  
 
