@@ -17,6 +17,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GuestService } from './guest/guest.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     GuestComponent,
     RoomComponent,
     ReservationComponent,
+    AuthComponent,
     
   ],
 
@@ -42,7 +45,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [GuestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

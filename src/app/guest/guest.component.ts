@@ -4,6 +4,7 @@ import { Guest } from './guest';
 import {GuestService} from './guest.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-guest',
@@ -11,7 +12,9 @@ import { FormBuilder, FormGroup } from "@angular/forms";
   styleUrls: ['./guest.component.css']
 })
 export class GuestComponent implements OnInit {
-  form!: FormGroup;
+  Guestform: FormGroup;
+ 
+
   guests: Guest[] = [];
   mode = 'create';
 
@@ -21,68 +24,40 @@ export class GuestComponent implements OnInit {
     private modalService: NgbModal,
     public fb: FormBuilder
   ) {
-    this.form = this.fb.group({
-      rowForm: this.fb.group({
-      name: [''],
-      PhoneNo: [''],
-      DoB: [''],
-      IdNo: [''],
-      email: [''],
+    this.Guestform = this.fb.group({
+      id:[''],
+      Name: ['', Validators.required],
+      PhoneNo: ['', Validators.required, Validators.maxLength(10)],
+      DateOfBirth: ['', Validators.required],
+      IdNo: ['', Validators.required, Validators.maxLength(10)],
+      Email: ['', Validators.required, Validators.email],
       IsActive: [''],
-    })
   })
-   }
-
-/*
-
-  guestform = new FormGroup({
-    name: new FormControl('', { validators: [Validators.required] }),
-
-    email: new FormControl('', {
-      validators: [Validators.required, Validators.email],
-    }),
-
-    password: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(6)],
-    }),
-
-    nic: new FormControl('', {
-      validators: [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(10),
-      ],
-    }),
-
-    mobile: new FormControl('', {
-      validators: [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(10),
-      ],
-    }),
-    vehicleNumber: new FormControl('', { validators: [Validators.required] }),
-    vehicleColor: new FormControl('', { validators: [Validators.required] }),
-    image: new FormControl(''),
-  });
-
-  
-*/
+  }
+  get validation(){
+    return this.Guestform.controls;
+  }
 
   ngOnInit(): void {
 
-    this.guestService.getAllContacts()
-    this.guestService.guests$.subscribe((guests$)=>{
-    this.guests = guests$
-      console.log(this.guests)
-      
-    })
+    this.guestService.getAllContacts().subscribe((response) => {
+      this.guests = response;
+    });
   }
 
   deleteRow(id:string){
-    this.guestService.deleteGuest(id),
-    this.guestService.getAllContacts()
-  }
+    this.guestService.deleteGuest(id).subscribe((response) => {
+        this.guestService.getAllContacts().subscribe(
+          (response) => {
+            this.guests = response;
+            this.router.navigate(['/guest']);
+          },
+          (error) => console.log(error)
+        );
+      },
+      (error) => console.log(error)
+    )};
+      
 
 
   open(content: any) {
@@ -101,8 +76,18 @@ export class GuestComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.form.value)
-  }
+    this.guestService.submitForm(this.Guestform.value).subscribe(
+      (response) => {
+        this.guestService.getAllContacts().subscribe(
+          (response) => {
+            this.guests = response;
+            this.router.navigate(['/guest']);
+          },
+          (error) => console.log(error)
+        );
+      },
+      (error) => console.log(error)
+    )};
 
   }
 

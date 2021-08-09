@@ -59,34 +59,47 @@
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <b style="color: #B21313;">ID : </b>
-    <input type="number" formControlName="id" style="width: 20%; height: 20%; margin-right: auto; border: none;" class="form-control" id="inputName" >
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <button type="button" style=" margin-right: 0;margin-left:auto;" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <h1 class="modal-title" id="staticBackdropLabel"><b>Guest Details</b></h1>
-    <form [formGroup]="form" (ngSubmit)="submitForm()">
-      <div class="form-group mb-3">
-        <label for="inputName">Full Name :</label>
-        <input type="text" class="form-control" id="inputName" formControlName="name">
-      </div>
+    <form [formGroup]="Guestform">
+        <div class="form-group mb-3">
+          <label for="inputName">Full Name :</label>
+          <input type="text" class="form-control" id="inputName" formControlName="Name">
+          <span class="error" *ngIf="validation.Name.invalid && validation.Name.touched" >
+            <small>  Name is required!</small>
+          </span>
+        </div>
         <div class="form-group mb-3 form-row">
           <label for="inputPhoneNumber">Phone Number :</label>
           <input type="text" class="form-control" id="inputPhoneNumber" formControlName="PhoneNo">
+          <span class="error" *ngIf="validation.PhoneNo.invalid && validation.PhoneNo.touched" >
+            <small>Number is required!</small> 
+          </span>
         </div>
         <div class="form-group mb-3 form-row middle">
           <label for="inputDoB">Date of Birth :</label>
-          <input type="text" class="form-control" id="inputDoB" formControlName="DoB" >
+          <input type="date" class="form-control" id="inputDoB" formControlName="DateOfBirth" >
+          <span class="error" *ngIf="validation.DateOfBirth.invalid && validation.DateOfBirth.touched" >
+            <small>Date Of Birth is required!</small>
+          </span>
         </div>
         <div class="form-group mb-3 form-row">
           <label for="inputIDNumber">ID Number :</label>
           <input type="text" class="form-control" id="inputIDNumber" formControlName="IdNo">
+          <span class="error" *ngIf="validation.IdNo.invalid && validation.IdNo.touched" >
+            <small>ID is required! (max length 10)</small> 
+          </span>
         </div>
         <div class="form-group mb-3 form-row middle" >
           <label for="inputEmail">Email :</label>
-          <input type="email" class="form-control" id="inputEmail" formControlName="email">
+          <input type="email" class="form-control" id="inputEmail" formControlName="Email">
+          <span class="error" *ngIf="validation.Email.invalid && validation.Email.touched" >
+            <small>Email is required!</small> 
+          </span>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="IsActive">
@@ -97,20 +110,9 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="submitForm()" (click)="modal.close('Save click')">Save</button>
   </div>
 </ng-template>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
