@@ -26,4 +26,8 @@ export class GuestService{
     submitForm(formData: any) {
       return this.http.post(this.contactsBaseUrl, formData);
     }
+
+    UpdateGuest(id:string, formData: any){
+      return this.http.put (this.contactsBaseUrl + '/' + id, formData);
+    }
 }

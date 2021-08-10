@@ -5,7 +5,6 @@ import {GuestService} from './guest.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Validators } from '@angular/forms';
-import { Ng2SearchPipe } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-guest',
@@ -15,9 +14,12 @@ import { Ng2SearchPipe } from 'ng2-search-filter';
 export class GuestComponent implements OnInit {
   Guestform: FormGroup;
   searchText: any;
-  
+
+  page:number = 1;
+
   guests: Guest[] = [];
   mode = 'create';
+  
 
   constructor(
     private guestService : GuestService,
@@ -59,26 +61,7 @@ export class GuestComponent implements OnInit {
       (error) => console.log(error)
     )};
       
-
-
-  open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    })
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      this.Guestform.reset();
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      this.Guestform.reset();
-      return 'by clicking on a backdrop';
-    } else {
-      this.Guestform.reset();
-      return `with: ${reason}`;
-    }
-  }
-
+    
   submitForm() {
     this.guestService.submitForm(this.Guestform.value).subscribe(
       (response) => {
@@ -94,7 +77,40 @@ export class GuestComponent implements OnInit {
       (error) => console.log(error)
     )};
 
-   
+  UpdateGuest(id:string){
+    this.guestService.UpdateGuest(id,this.Guestform.value).subscribe((response) => {
+        this.guestService.getAllContacts().subscribe(
+          (response) => {
+            this.guests = response;
+            this.router.navigate(['/guest']);
+            this.Guestform.reset();
+          },
+          (error) => console.log(error)
+        );
+      },
+      (error) => console.log(error)
+    )};
+  
+    open(content: any) {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      })
+    }
+  
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return `with: ${reason}`;
+      }
+    }
+
+    clearModalData() {
+      this.Guestform.reset();
+  } 
+
+
   }
 
   

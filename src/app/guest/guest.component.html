@@ -1,42 +1,42 @@
 <!-- Nav Bar 1 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #041A32;" >
-  <div class="container-fluid" style="background-color: #041A32; ">
+<nav class="navbar navbar-expand-lg navbar-light bg-light firstNavBar" >
+  <div class="container-fluid">
     <div class= "header">
       <h1 class= "header">Prism System </h1>
     </div>
       
-    <button class="navbar-toggler" type="button" style="box-shadow: none;" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <div style="background-color: #041A32;" class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" routerLink="/reservation" style="color: #fff;">Reservation</a>
+            <a class="nav-link deactive" routerLink="/reservation">Reservation</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" routerLink="/guest" style="color: #FF6400;">Guest</a>
+            <a class="nav-link active" routerLink="/guest" >Guest</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="/room" style="color: #FFf;">Room</a>
+            <a class="nav-link deactive" aria-current="page" routerLink="/room" >Room</a>
         </li>
       </ul>
-      <img src="assets/img/f.jpg" alt="Avatar" style="border-radius: 50%;  width: 35px; height: 35px; margin-left: 60px;">
+      <img src="assets/img/f.jpg" alt="Avatar" >
     </div>      
   </div>
 </nav>
 
 <!-- Nav Bar 2 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #F8F8F8; height: 60px; box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);" >
-  <div class="container-fluid" style="background-color: #F8F8F8; height: 60px;">
-    <div class="bar" style="width: 50%;">
+<nav class="navbar navbar-expand-lg secondNavBar" >
+  <div class="container-fluid">
+    <div class="bar">
       <img class="img" src="assets/img/guest.jpg">
-      <h2 class ="pagename" style = "padding-left: 3rem !important;" ><b>Guest </b></h2>
+      <h2 class ="pagename"  ><b>Guest </b></h2>
     </div>
 
-    <div style="width: 250px;" class="input-group rounded">
-      <input type="search" style="border: none;  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" class="form-control" autocomplete="off"  [(ngModel)]="searchText"  />
-      <span style="background-color: #041A32; box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2); color: #fff;" class="shadow-sm p-3 mb-5 bg-white rounded" class="input-group-text border-0" id="search-addon">
+    <div class="input-group rounded search">
+      <input type="search" class="form-control searchBox" placeholder="Search" [(ngModel)]="searchText"  />
+      <span id="searchIcon" class="input-group-text border-0">
         <i class="fas fa-search"></i>
       </span>
     </div>
@@ -46,16 +46,16 @@
 
 <!-- Button trigger modal -->
 <p>
-  <mat-toolbar style="background-color:#fff ;">
+  <mat-toolbar>
   <span class="example-spacer"></span>
-      <mat-icon (click)="open(content)" style="background-color: #000; color:#fff;">add</mat-icon>
+      <mat-icon (click)="open(content3)" (click)="clearModalData()" >add</mat-icon>
   </mat-toolbar>
 </p>
 
 <!-- Modal -->
-<ng-template #content let-modal>
+<ng-template #content3 let-modal>
   <div class="modal-header">
-      <button type="button" style=" margin-right: 0;margin-left:auto;" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <button (click)="modal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -63,42 +63,42 @@
     <h1 class="modal-title" id="staticBackdropLabel"><b>Guest Details</b></h1>
     <form [formGroup]="Guestform">
       <div class="form-group mb-3">
-        <label for="inputName">Full Name :</label>
-        <input type="text" class="form-control" id="inputName" formControlName="Name">
+        <label>Full Name :</label>
+        <input type="text" class="form-control" formControlName="Name">
         <span class="error" *ngIf="validation.Name.invalid && validation.Name.touched" >
           <small>  Name is required!</small>
         </span>
     </div>
       <div class="form-group mb-3 form-row">
-        <label for="inputPhoneNumber">Phone Number :</label>
-        <input type="text" class="form-control" id="inputPhoneNumber" formControlName="PhoneNo">
+        <label >Phone Number :</label>
+        <input type="text" class="form-control" formControlName="PhoneNo">
         <span class="error" *ngIf="validation.PhoneNo.invalid && validation.PhoneNo.touched" >
           <small>Number is required! (max length 10)</small> 
         </span>
       </div>
       <div class="form-group mb-3 form-row middle">
-        <label for="inputDoB">Date of Birth :</label>
-        <input type="date" class="form-control" id="inputDoB" formControlName="DateOfBirth" >
+        <label>Date of Birth :</label>
+        <input type="date" class="form-control" formControlName="DateOfBirth" >
         <span class="error" *ngIf="validation.DateOfBirth.invalid && validation.DateOfBirth.touched" >
           <small>Date Of Birth is required!</small>
         </span>
       </div>
       <div class="form-group mb-3 form-row">
-        <label for="inputIDNumber">ID Number :</label>
-        <input type="text" class="form-control" id="inputIDNumber" formControlName="IdNo">
+        <label>ID Number :</label>
+        <input type="text" class="form-control" formControlName="IdNo">
         <span class="error" *ngIf="validation.IdNo.invalid && validation.IdNo.touched" >
           <small>ID is required! (max length 10)</small> 
         </span>
       </div>
       <div class="form-group mb-3 form-row middle" >
-        <label for="inputEmail">Email :</label>
-        <input type="email" class="form-control" id="inputEmail" formControlName="Email">
+        <label>Email :</label>
+        <input type="email" class="form-control" formControlName="Email">
         <span class="error" *ngIf="validation.Email.invalid && validation.Email.touched" >
           <small>Valid Email is required!</small> 
         </span>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="IsActive">
+        <input class="form-check-input" type="checkbox" formControlName="IsActive">
         <label class="form-check-label" for="gridCheck">
           Is active?
         </label>
@@ -111,7 +111,7 @@
 </ng-template>
 
 <!--Data Table -->
-<div class="card" style="border: none;  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2); margin-left: 20px;margin-right: 20px;">
+<div class="card" >
   <div class="card-body">
 <table class="table table-hover">
   <thead>
@@ -127,19 +127,78 @@
   </thead>
   
   <tbody>
-    <tr *ngFor = "let guest of guests | filter:searchText" >
+    <tr *ngFor = "let guest of guests | filter:searchText | paginate: {itemsPerPage : 5, currentPage:page};" >
       <td data-label="Status" > <mat-icon [ngStyle]="{'color': guest.IsActive? '#143E18' : '#6B1111'}">stars</mat-icon></td>
       <td data-label="Name" > <span>{{ guest.Name }}</span></td>
       <td data-label="Phone Number" ><span>{{ guest.PhoneNo }}</span></td>
-      <td data-label="Date of Birth" ><span>{{ guest.DateOfBirth }}</span></td>
+      <td data-label="Date of Birth" ><span>{{ guest.DateOfBirth | date: 'dd/MMM/yy'}}</span></td>
       <td data-label="ID Number" ><span>{{ guest.IdNo }}</span></td>
       <td data-label="Email" ><span>{{ guest.Email }}</span></td>
       <td data-label="Action" ><span>
-        <mat-icon style="color: #000;">edit</mat-icon>
-        <mat-icon  (click)="open(content)"  style="color:#B21313; margin-left: 15px;">delete</mat-icon>
+        <mat-icon (click)="open(content1)" style="color: #000;">edit</mat-icon>
+
+        <!--Edit Modal -->
+        <ng-template #content1 let-modal>
+          <div class="modal-header">
+              <button (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h1 class="modal-title" id="staticBackdropLabel"><b>Guest Details</b></h1>
+            <form [formGroup]="Guestform">
+              <div class="form-group mb-3">
+                <label>Full Name :</label>
+                <input type="text"  [(ngModel)]="guest.Name" class="form-control" id="inputName" formControlName="Name">
+                <span class="error" *ngIf="validation.Name.invalid && validation.Name.touched" >
+                  <small>  Name is required!</small>
+                </span>
+            </div>
+              <div class="form-group mb-3 form-row">
+                <label>Phone Number :</label>
+                <input type="text" [(ngModel)]="guest.PhoneNo" class="form-control" id="inputPhoneNumber" formControlName="PhoneNo">
+                <span class="error" *ngIf="validation.PhoneNo.invalid && validation.PhoneNo.touched" >
+                  <small>Number is required! (max length 10)</small> 
+                </span>
+              </div>
+              <div class="form-group mb-3 form-row middle">
+                <label>Date of Birth :</label>
+                <input type="date" class="form-control" [(ngModel)]="guest.DateOfBirth" id="inputDoB" formControlName="DateOfBirth" >
+                <span class="error" *ngIf="validation.DateOfBirth.invalid && validation.DateOfBirth.touched" >
+                  <small>Date Of Birth is required!</small>
+                </span>
+              </div>
+              <div class="form-group mb-3 form-row">
+                <label>ID Number :</label>
+                <input type="text" class="form-control" id="inputIDNumber" [(ngModel)]="guest.IdNo" formControlName="IdNo">
+                <span class="error" *ngIf="validation.IdNo.invalid && validation.IdNo.touched" >
+                  <small>ID is required! (max length 10)</small> 
+                </span>
+              </div>
+              <div class="form-group mb-3 form-row middle" >
+                <label>Email :</label>
+                <input type="email" class="form-control" id="inputEmail" [(ngModel)]="guest.Email" formControlName="Email">
+                <span class="error" *ngIf="validation.Email.invalid && validation.Email.touched" >
+                  <small>Valid Email is required!</small> 
+                </span>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="guest.IsActive" formControlName="IsActive">
+                <label class="form-check-label" for="gridCheck">
+                  Is active?
+                </label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="btn" type="button" [disabled]="Guestform.invalid" class="btn btn-outline-dark" (click)="UpdateGuest(guest.id)" (click)="modal.close('Save click')">Update</button>
+          </div>
+        </ng-template>
+
+        <mat-icon  (click)="open(content2)"  style="color:#B21313; margin-left: 15px;">delete</mat-icon>
         
         <!--Delete msg Modal -->
-        <ng-template #content let-modal>
+        <ng-template #content2 let-modal>
           <div class="modal-header">
             <h2 class="modal-title" id="staticBackdropLabel" style="color: #B21313;"><b>Confirmation</b></h2>
               <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -150,7 +209,7 @@
             Are you sure to delete this guest ?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" style="background-color: #B21313; color: #fff;" (click)="deleteRow(guest.id)" (click)="modal.close('Delete click')">Delete</button>
+            <button type="button" class="btn btn-outline-dark" (click)="deleteRow(guest.id)" (click)="modal.close('Delete click')">Delete</button>
           </div>
         </ng-template>
       </span>
@@ -158,6 +217,9 @@
     </tr>
     </tbody>
   </table>
+  <br>
+  <pagination-controls (pageChange) = "page = $event" class="paginator"></pagination-controls>
+  
 </div>
 </div>
 
