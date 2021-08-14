@@ -11,11 +11,12 @@ import { Roomtype } from "./roomtype";
   styleUrls: ['./roomtype.component.css']
 })
 export class RoomtypeComponent implements OnInit {
-  
+
   RoomTypeID!: string;
   closeResult = '';
   Roomtypeform: FormGroup;
   roomtypes: Roomtype[] = [];
+  searchText: any;
 
   constructor(
     private modalService: NgbModal,

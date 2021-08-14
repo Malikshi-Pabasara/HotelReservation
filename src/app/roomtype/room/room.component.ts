@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { Room } from "./room";
 import { RoomService } from './room.service';
@@ -12,12 +12,14 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./room.component.css']
 })
 export class RoomComponent implements OnInit {
+  @Input() data !:string; 
+  @Input() search!:string;
+
   toggle = true;
   status = 'Enable'; 
   Roomform: FormGroup;
   searchText: any;
   page:number = 1;
-  RoomTypeId : number =1;
   rooms: Room[] = [];
  
   constructor(

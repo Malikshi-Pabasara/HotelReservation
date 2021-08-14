@@ -69,14 +69,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor = "let room of rooms | filter:searchText | paginate: {itemsPerPage : 4, currentPage:page};" >
-        <!--  <ng-container *ngIf="room.RoomTypeId == 1 "> -->
+        <tr *ngFor = "let room of rooms | filter:search">
+        <ng-container *ngIf="room.RoomTypeId == data ">
           <td data-label="Status" > <mat-icon [ngStyle]="{'color': room.IsActive? '#143E18' : '#6B1111'}">stars</mat-icon></td>
           <td data-label="Room No" > <span>{{ room.RoomNo }}</span></td>
           <td data-label="Price" ><span>{{ room.Price }}</span></td>
-          <td data-label="Room Status" ><span>{{ room.RoomStatus}}</span></td>
-          <td data-label="Room Type Id" ><span>{{ room.RoomTypeId}}</span></td>
-          <td data-label="Action" ><span>
+          <td data-label="Room Status"><span>{{ room.RoomStatus}}</span></td>
+          <td data-label="Room Type Id"><span>{{ room.RoomTypeId}}</span></td>
+          <td data-label="Action"><span>
             <mat-icon (click)="open(content1)" style="color: #000;">edit</mat-icon>
 
             <!--Edit Modal -->
@@ -145,11 +145,10 @@
             </ng-template>
       </span>
       </td>
-    <!--</ng-container>-->
+    </ng-container>
     </tr> 
     </tbody>
   </table>
   <br>
-  <pagination-controls (pageChange) = "page = $event" class="paginator"></pagination-controls>
 </div>
 </div>

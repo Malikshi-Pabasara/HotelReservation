@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
-
+import {NgSelectModule} from '@ng-select/ng-select';
 
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -51,6 +51,7 @@ import { RoomtypeComponent } from './roomtype/roomtype.component';
     NgxPaginationModule,
     FormsModule,
     FlexLayoutModule,
+    NgSelectModule,
 
     MatToolbarModule,
     MatIconModule,

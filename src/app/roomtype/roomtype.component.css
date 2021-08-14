@@ -8,13 +8,14 @@
   vertical-align: middle;
   background-color: #041A32;
 }
-.container {
+.con {
   display:table;
   width: 100%;
   margin-top: -50px;
   padding: 50px 0 0 0; /*set left/right padding according to needs*/
   box-sizing: border-box;
   margin-left: 0;
+  height: 100%;
 }
 .nav-link {
   padding-right: 3rem !important;
@@ -103,5 +104,3 @@ p mat-toolbar{
     height: 60px;
   }
 }
-  
-

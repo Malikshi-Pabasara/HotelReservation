@@ -36,7 +36,7 @@
         </div>
 
         <div class="input-group rounded search">
-            <input type="search" class="form-control searchBox" placeholder="Search" />
+          <input type="search" class="form-control searchBox" placeholder="Search" [(ngModel)]="searchText"  />
             <span id="searchIcon" class="input-group-text border-0">
                 <i class="fas fa-search"></i>
             </span>
@@ -88,8 +88,8 @@
       </ng-template>
 
     <!-- room type display-->     
-      <div *ngFor = "let roomtype of roomtypes" >
-        <button class="btn roomtypebtn"  (click)="getDAta(roomtype.id)"><b>{{roomtype.Name}}</b>
+      <div *ngFor = "let roomtype of roomtypes">
+        <button class="btn roomtypebtn"  (focus)="getDAta(roomtype.id)" autofocus><b>{{roomtype.Name}}</b>
           <mat-icon  [matMenuTriggerFor]="menu" class="icon"  >more_vert</mat-icon>
           <mat-menu #menu="matMenu">
             <label mat-menu-item (click)="open(content2)">Edit</label>
@@ -148,8 +148,8 @@
       </div>
   </div>
 
-  <div class="col no-float" id="main">
-    <app-room></app-room>
+  <div class="col-md-9 no-float" id="main">
+    <app-room [data]= "RoomTypeID" [search]="searchText"></app-room>
   </div>
 </div>
 </div>

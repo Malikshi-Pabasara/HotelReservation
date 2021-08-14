@@ -4,4 +4,5 @@ export interface Room { //Model
     Price: string;
     RoomStatus: string;
     IsActive: boolean;
+    RoomTypeId:number;
 }
