@@ -3,12 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { GuestComponent } from './guest/guest.component';
-import { RoomComponent } from './room/room.component';
+import { RoomComponent } from './roomtype/room/room.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,13 +18,14 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 
 
+
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
-import { GuestService } from './guest/guest.service';
 import { AuthComponent } from './auth/auth.component';
+import { RoomtypeComponent } from './roomtype/roomtype.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { AuthComponent } from './auth/auth.component';
     RoomComponent,
     ReservationComponent,
     AuthComponent,
+    RoomtypeComponent,
     
   ],
 
@@ -47,6 +50,7 @@ import { AuthComponent } from './auth/auth.component';
     Ng2OrderModule,
     NgxPaginationModule,
     FormsModule,
+    FlexLayoutModule,
 
     MatToolbarModule,
     MatIconModule,
@@ -54,7 +58,7 @@ import { AuthComponent } from './auth/auth.component';
     MatTableModule,
     HttpClientModule
   ],
-  providers: [GuestService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

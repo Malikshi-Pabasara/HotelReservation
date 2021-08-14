@@ -18,7 +18,7 @@
             <a class="nav-link active" routerLink="/guest" >Guest</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link deactive" aria-current="page" routerLink="/room" >Room</a>
+            <a class="nav-link deactive" aria-current="page" routerLink="/roomtype" >Room</a>
         </li>
       </ul>
       <img src="assets/img/f.jpg" alt="Avatar" >
@@ -44,7 +44,7 @@
 </nav>
 <br>
 
-<!-- Button trigger modal -->
+<!-- Button add modal -->
 <p>
   <mat-toolbar>
   <span class="example-spacer"></span>
@@ -52,7 +52,7 @@
   </mat-toolbar>
 </p>
 
-<!-- Modal -->
+<!--Add Modal -->
 <ng-template #content3 let-modal>
   <div class="modal-header">
       <button (click)="modal.dismiss('Cross click')">
@@ -140,7 +140,7 @@
         <!--Edit Modal -->
         <ng-template #content1 let-modal>
           <div class="modal-header">
-              <button (click)="modal.dismiss('Cross click')">
+              <button  (click)="cancel()" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -149,7 +149,7 @@
             <form [formGroup]="Guestform">
               <div class="form-group mb-3">
                 <label>Full Name :</label>
-                <input type="text"  [(ngModel)]="guest.Name" class="form-control" id="inputName" formControlName="Name">
+                <input type="text" required  [(ngModel)]="guest.Name" class="form-control" id="inputName" formControlName="Name">
                 <span class="error" *ngIf="validation.Name.invalid && validation.Name.touched" >
                   <small>  Name is required!</small>
                 </span>
@@ -191,7 +191,10 @@
             </form>
           </div>
           <div class="modal-footer">
+            <button  id="Cancel" type="button" class="btn btn-outline-dark" (click)="cancel()"  (click)="modal.close('Save click')">Cancel</button>
+          
             <button id="btn" type="button" [disabled]="Guestform.invalid" class="btn btn-outline-dark" (click)="UpdateGuest(guest.id)" (click)="modal.close('Save click')">Update</button>
+           
           </div>
         </ng-template>
 

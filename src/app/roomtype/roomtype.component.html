@@ -1,0 +1,155 @@
+<div class="con">
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light firstNavBar" id="firstNavBar" >
+    <div class="container-fluid">
+        <div class= "header">
+            <h1 class= "header">Prism System </h1>
+        </div>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-">
+                    <a class="nav-link deactive" routerLink="/reservation">Reservation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link deactive" routerLink="/guest">Guest</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/roomtype">Room</a>
+                </li>
+            </ul>
+            <img src="assets/img/f.jpg" alt="Avatar" >
+        </div>      
+    </div>
+</nav>
+
+<!-- Nav Bar2 -->
+<nav class="navbar navbar-expand-lg secondNavBar" id ="secondNavBar">
+    <div class="container-fluid">
+        <div class="bar">
+            <img class="img" src="assets/img/room.jpg">
+            <h2 class ="pagename" ><b>Room Type </b></h2>
+        </div>
+
+        <div class="input-group rounded search">
+            <input type="search" class="form-control searchBox" placeholder="Search" />
+            <span id="searchIcon" class="input-group-text border-0">
+                <i class="fas fa-search"></i>
+            </span>
+        </div>
+    </div>
+</nav>
+
+<!-- Side Bar -->
+<div class="row" >
+  <div class="col-md-3 no-float leftPart" id="sidebar">
+    <p>
+      <mat-toolbar>
+      <span class="example-spacer"></span>
+          <mat-icon  (click)="open(content)" (click)="clearModalData() " >add</mat-icon>
+      </mat-toolbar>
+    </p>
+    <!-- room type Add modal-->
+      <ng-template #content let-modal >
+        <div class="modal-body">
+          <h2 class="text-center" ><b>Room Details</b></h2>
+          <form [formGroup]="Roomtypeform">
+            <div class="form-group mb-3">
+              <label>Room Type Number:</label>
+              <input type="text" class="form-control" formControlName="id">
+              <span class="error" *ngIf="validation.id.invalid && validation.id.touched" >
+                <small>  Room Type Name is required!</small>
+              </span>
+            </div>
+            <div class="form-group mb-3">
+              <label>Room Type Name:</label>
+              <input type="text" class="form-control" formControlName="Name">
+              <span class="error" *ngIf="validation.Name.invalid && validation.Name.touched" >
+                <small>  Room Type Name is required!</small>
+              </span>
+            </div>
+            <div class="form-group mb-3">
+              <label >Code :</label>
+              <input type="text" class="form-control" formControlName="Code">
+              <span class="error" *ngIf="validation.Code.invalid && validation.Code.touched" >
+                <small>Code is required!</small> 
+              </span>
+            </div> 
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button  id="Cancel" type="button"  (click)="clearModalData()"  (click)="modal.close('Save click')">Cancel</button>     
+          <button id="btn" type="button" [disabled]="Roomtypeform.invalid" (click)="submitForm()" (click)="modal.close('Save click')">Save</button>
+        </div>
+      </ng-template>
+
+    <!-- room type display-->     
+      <div *ngFor = "let roomtype of roomtypes" >
+        <button class="btn roomtypebtn"  (click)="getDAta(roomtype.id)"><b>{{roomtype.Name}}</b>
+          <mat-icon  [matMenuTriggerFor]="menu" class="icon"  >more_vert</mat-icon>
+          <mat-menu #menu="matMenu">
+            <label mat-menu-item (click)="open(content2)">Edit</label>
+              <!-- edit modal-->
+                <ng-template #content2 let-modal >
+                  <div class="modal-body">
+                  <h2 class="text-center" ><b>Room Details</b></h2>
+                    <form [formGroup]="Roomtypeform">
+                      <div class="form-group mb-3">
+                        <label>Room Type Number:</label>
+                        <input type="text" [(ngModel)]="roomtype.id" class="form-control" formControlName="id">
+                        <span class="error" *ngIf="validation.id.invalid && validation.id.touched" >
+                          <small>  Room Type Name is required!</small>
+                        </span>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Room Type Name:</label>
+                        <input type="text" class="form-control" [(ngModel)]="roomtype.Name" formControlName="Name">
+                        <span class="error" *ngIf="validation.Name.invalid && validation.Name.touched" >
+                          <small>  Room Type Name is required!</small>
+                        </span>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label >Code :</label>
+                        <input type="text" class="form-control" [(ngModel)]="roomtype.Code"  formControlName="Code">
+                        <span class="error" *ngIf="validation.Code.invalid && validation.Code.touched" >
+                          <small>Code is required!</small> 
+                        </span>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button  id="Cancel" type="button"  (click)="cancel()"(click)="modal.close('Save click')">Cancel</button>     
+                    <button id="btn" type="button" [disabled]="Roomtypeform.invalid" (click)="UpdateRoom(roomtype.id)" (click)="modal.close('Save click')">Save</button>
+                  </div>
+                </ng-template>
+
+            <label mat-menu-item (click)="open(content3)">Delete</label>
+              <!-- delete modal-->
+                <ng-template #content3 let-modal>
+                  <div class="modal-header">
+                    <h2 class="modal-title" id="staticBackdropLabel" style="color: #B21313;"><b>Confirmation</b></h2>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure to delete this Room Type ?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="deletebtn btn-outline-dark" (click)="deleteRow()" (click)="modal.close('Delete click')">Delete</button>
+                  </div>
+                </ng-template>
+          </mat-menu>
+        </button> <br><br><br>
+      </div>
+  </div>
+
+  <div class="col no-float" id="main">
+    <app-room></app-room>
+  </div>
+</div>
+</div>

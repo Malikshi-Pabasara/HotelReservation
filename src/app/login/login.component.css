@@ -12,11 +12,16 @@
     -webkit-text-stroke: 1px #041A32;
     font-size: 35px;
 }
-
 .login{
     display: flex;
     flex-direction: column;
     height: 100vh;
     background-attachment: fixed;
     background-color: #F8F8F8;
+}
+#card{
+    width: 23rem; 
+    margin-top: 60px; 
+    margin-left: auto;
+    margin-right: auto;
 }

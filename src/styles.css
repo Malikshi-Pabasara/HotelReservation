@@ -113,6 +113,31 @@ body {
 .error{
   color: red;
 }
+.modal-header button{
+  margin-right: 0;
+  margin-left:auto;
+}
+#btn{
+  color: #fff;
+  background-color: #FF6400;
+  box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.2);
+}
 
+#Cancel{
+  color: #000;
+  background-color: #F2F0F0;
+  box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.2);
+}
+#Cancel:hover {
+  background-color: #07325f;
+  color: #fff;
+}
+#btn:hover {
+  background-color: #07325f;
+}
 
+.modal-footer button{
+  width: 85px;
+  height: 40px;
+}
   

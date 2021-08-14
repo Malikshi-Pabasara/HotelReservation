@@ -1,21 +1,27 @@
 <div class="login"> 
-    <div class="card" class="shadow p-3 mb-5 bg-body rounded" style="width: 23rem; margin-top: 60px; margin-left: auto;margin-right: auto;">
+    <div id="card" class="shadow p-3 mb-5 bg-body">
         <div class="card-body">
-            <form>
+            <form [formGroup]="Loginform">
                 <div class="mb-3">
                     <h1 class= "header1">Prism System  </h1>
                     <br>
-                    <input type="email" placeholder="User Name" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" placeholder="User Email" class="form-control" formControlName="email" >
+                    <span class="error" *ngIf="validation.email.invalid && validation.email.touched" >
+                        <small>  email is required!</small>
+                      </span>
                 </div>
                 <div class="mb-3">
-                    <input type="password" placeholder="password" class="form-control"  id="exampleInputPassword1">
+                    <input type="password" placeholder="password" class="form-control" formControlName="password" >
+                    <span class="error" *ngIf="validation.password.invalid && validation.password.touched" >
+                        <small>  Password is required!</small>
+                      </span>
                 </div>
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input">
                     <label class="form-check-label" for="exampleCheck1">Remember Me</label>
                 </div>
                     <br>
-                    <button type="submit" class="btn btn-primary" class="submit" routerLink="/room">Login</button>
+                    <button type="submit" class="btn btn-primary" class="submit" routerLink="/roomtype">Login</button>
                     <br><br>
             </form>
         </div>

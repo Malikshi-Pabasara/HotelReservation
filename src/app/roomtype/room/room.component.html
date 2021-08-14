@@ -1,0 +1,155 @@
+<p>
+  <mat-toolbar>
+    <h3><b>Rooms Overview</b></h3>
+  <span class="example-spacer"></span>
+      <mat-icon (click)="open(content3)" (click)="clearModalData()" >add</mat-icon>
+  </mat-toolbar>
+</p>
+      
+<!-- Modal -->      
+<ng-template #content3 let-modal >
+  <div class="modal-body">
+    <h2 class="text-center" ><b>Room Details</b></h2>
+    
+    <form [formGroup]="Roomform">
+      <div class="form-group mb-3">
+        <label>Room Number:</label>
+        <input type="text" class="form-control" formControlName="RoomNo">
+        <span class="error" *ngIf="validation.RoomNo.invalid && validation.RoomNo.touched" >
+          <small>  Room Number is required!</small>
+        </span>
+      </div>
+      <div class="form-group mb-3">
+        <label >Price :</label>
+        <input type="text" class="form-control" formControlName="Price">
+        <span class="error" *ngIf="validation.Price.invalid && validation.Price.touched" >
+          <small>Price is required!</small> 
+        </span>
+      </div>
+      <div class="form-group mb-3">
+        <label>Room Status :</label>
+        <input type="text" class="form-control" formControlName="RoomStatus" >
+        <span class="error" *ngIf="validation.RoomStatus.invalid && validation.RoomStatus.touched" >
+          <small>Room Status is required!</small>
+        </span>
+      </div> 
+      <div class="form-group mb-3">
+        <label>Room Type  Number :</label>
+        <input type="text" class="form-control" formControlName="RoomTypeId" >
+        <span class="error" *ngIf="validation.RoomTypeId.invalid && validation.RoomTypeId.touched" >
+          <small>Room Type Number is required!</small>
+        </span>
+      </div> 
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="IsActive">
+        <label class="form-check-label" for="gridCheck">
+          Is active?
+        </label>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button  id="Cancel" type="button" (click)="modal.close('Save click')">Cancel</button>     
+    <button id="btn" type="button" [disabled]="Roomform.invalid" (click)="submitForm()" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+      
+<!--Data Table -->
+<div class="card" >
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Status</th>
+          <th scope="col">Room No</th>
+          <th scope="col">Price</th>
+          <th scope="col">Room Status</th>
+          <th scope="col">Room Type</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let room of rooms | filter:searchText | paginate: {itemsPerPage : 4, currentPage:page};" >
+        <!--  <ng-container *ngIf="room.RoomTypeId == 1 "> -->
+          <td data-label="Status" > <mat-icon [ngStyle]="{'color': room.IsActive? '#143E18' : '#6B1111'}">stars</mat-icon></td>
+          <td data-label="Room No" > <span>{{ room.RoomNo }}</span></td>
+          <td data-label="Price" ><span>{{ room.Price }}</span></td>
+          <td data-label="Room Status" ><span>{{ room.RoomStatus}}</span></td>
+          <td data-label="Room Type Id" ><span>{{ room.RoomTypeId}}</span></td>
+          <td data-label="Action" ><span>
+            <mat-icon (click)="open(content1)" style="color: #000;">edit</mat-icon>
+
+            <!--Edit Modal -->
+            <ng-template #content1 let-modal >
+              <div class="modal-body">
+                <h2 class="text-center" ><b>Room Details</b></h2>
+                <form [formGroup]="Roomform">
+                  <div class="form-group mb-3">
+                    <label>Room Number:</label>
+                    <input type="text" class="form-control" [(ngModel)]="room.RoomNo" formControlName="RoomNo">
+                    <span class="error" *ngIf="validation.RoomNo.invalid && validation.RoomNo.touched" >
+                      <small>  Room Number is required!</small>
+                    </span>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label >Price :</label>
+                    <input type="text" class="form-control" [(ngModel)]="room.Price" formControlName="Price">
+                    <span class="error" *ngIf="validation.Price.invalid && validation.Price.touched" >
+                      <small>Price is required!</small> 
+                    </span>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label>Room Status :</label>
+                    <input type="text" class="form-control" [(ngModel)]="room.RoomStatus" formControlName="RoomStatus" >
+                    <span class="error" *ngIf="validation.RoomStatus.invalid && validation.RoomStatus.touched" >
+                      <small>Room Status is required!</small>
+                    </span>
+                  </div> 
+                  <div class="form-group mb-3">
+                    <label>Room Type Number :</label>
+                    <input type="text" class="form-control" [(ngModel)]="room.RoomTypeId" formControlName="RoomTypeId" >
+                    <span class="error" *ngIf="validation.RoomTypeId.invalid && validation.RoomTypeId.touched" >
+                      <small>Room Type Number is required!</small>
+                    </span>
+                  </div> 
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="room.IsActive" formControlName="IsActive">
+                    <label class="form-check-label" for="gridCheck">
+                      Is active?
+                    </label>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button  id="Cancel" type="button" (click)="modal.close('Save click')">Cancel</button>     
+                <button id="btn" type="button" [disabled]="Roomform.invalid" (click)="UpdateRoom(room.id)" (click)="modal.close('Save click')">Save</button>
+              </div>
+            </ng-template>
+
+            <mat-icon  (click)="open(content2)"  style="color:#B21313; margin-left: 15px;">delete</mat-icon>
+        
+            <!--Delete msg Modal -->
+            <ng-template #content2 let-modal>
+              <div class="modal-header">
+                <h2 class="modal-title" id="staticBackdropLabel" style="color: #B21313;"><b>Confirmation</b></h2>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Are you sure to delete this Room ?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="deletebtn btn btn-outline-dark" (click)="deleteRow(room.id)" (click)="modal.close('Delete click')">Delete</button>
+              </div>
+            </ng-template>
+      </span>
+      </td>
+    <!--</ng-container>-->
+    </tr> 
+    </tbody>
+  </table>
+  <br>
+  <pagination-controls (pageChange) = "page = $event" class="paginator"></pagination-controls>
+</div>
+</div>

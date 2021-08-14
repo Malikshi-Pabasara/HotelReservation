@@ -1,0 +1,107 @@
+.header{
+  font-family: Sarpanch;
+  text-align: left;
+  color: rgb(255, 100, 0);
+  font-size: larger;
+  width: 65%;
+  display: table-cell;
+  vertical-align: middle;
+  background-color: #041A32;
+}
+.container {
+  display:table;
+  width: 100%;
+  margin-top: -50px;
+  padding: 50px 0 0 0; /*set left/right padding according to needs*/
+  box-sizing: border-box;
+  margin-left: 0;
+}
+.nav-link {
+  padding-right: 3rem !important;
+  font-weight: bold;
+}
+a:hover {
+  background-color: #07325f;
+}
+  
+.form-control me-2{
+  width: 10%;
+}
+.leftPart{
+  height: 540Px;
+  background-color: #F2F0F0;
+  text-align:center;
+}
+.btn{
+  width: 200px;
+  height: 60px;
+}
+
+.bar{
+  display: table-cell;
+  vertical-align: middle;
+}
+button{
+  background-color: white;
+  color: black;
+  border: none;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0%;
+}
+.btn:focus {     
+  color: #FF6400;  
+  box-shadow: 0 1px 8px 0 #FF6400;
+}
+button:hover {
+  color: #FF6400;  
+  box-shadow: 0 1px 8px 0 #FF6400;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+mat-toolbar mat-icon{
+  background-color: #000; 
+  color:#fff;
+}
+p mat-toolbar{
+  background-color: #F2F0F0;
+}
+.toolbar{
+  background-color: #fff;
+}
+.icon{
+  float: right;
+  display : none;
+}
+.roomtypebtn:hover .icon{
+  display : inline-block;
+}
+.deletebtn{
+  background-color: #B21313; 
+  color: #fff;
+}
+@media (max-width: 550px) {
+  .con {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1.2fr 1.2fr 1fr;
+    grid-template-areas:
+      "firstNavBar"
+      "secondNavBar"
+      "sidebar"
+      "main";
+  }
+}
+@media (max-width: 834px) {
+  .btn{
+    width: 150px;
+    height: 60px;
+  }
+}
+@media (max-width: 834px) {
+  .btn{
+    width: 150px;
+    height: 60px;
+  }
+}
+  
+

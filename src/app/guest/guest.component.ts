@@ -14,12 +14,9 @@ import { Validators } from '@angular/forms';
 export class GuestComponent implements OnInit {
   Guestform: FormGroup;
   searchText: any;
-
   page:number = 1;
-
   guests: Guest[] = [];
   mode = 'create';
-  
 
   constructor(
     private guestService : GuestService,
@@ -37,6 +34,7 @@ export class GuestComponent implements OnInit {
       IsActive: new FormControl(''),
   })
   }
+
   get validation(){
     return this.Guestform.controls;
   }
@@ -59,9 +57,9 @@ export class GuestComponent implements OnInit {
         );
       },
       (error) => console.log(error)
-    )};
+    )
+  };
       
-    
   submitForm() {
     this.guestService.submitForm(this.Guestform.value).subscribe(
       (response) => {
@@ -75,7 +73,8 @@ export class GuestComponent implements OnInit {
         );
       },
       (error) => console.log(error)
-    )};
+    )
+  };
 
   UpdateGuest(id:string){
     this.guestService.UpdateGuest(id,this.Guestform.value).subscribe((response) => {
@@ -89,29 +88,32 @@ export class GuestComponent implements OnInit {
         );
       },
       (error) => console.log(error)
-    )};
+    )
+  };
   
-    open(content: any) {
-      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      })
-    }
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    })
+  }
   
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return `with: ${reason}`;
-      }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
     }
+  }
 
-    clearModalData() {
-      this.Guestform.reset();
+  clearModalData() {
+    this.Guestform.reset();
   } 
 
-
+  cancel(){
+    this.ngOnInit()
   }
+}
 
   
 
