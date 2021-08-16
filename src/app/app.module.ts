@@ -26,6 +26,8 @@ import {MatTableModule} from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { RoomtypeComponent } from './roomtype/roomtype.component';
+import { NewReservationComponent } from './reservation/new-reservation/new-reservation.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { RoomtypeComponent } from './roomtype/roomtype.component';
     ReservationComponent,
     AuthComponent,
     RoomtypeComponent,
+    NewReservationComponent,
     
   ],
 
@@ -57,6 +60,7 @@ import { RoomtypeComponent } from './roomtype/roomtype.component';
     MatIconModule,
     MatMenuModule,
     MatTableModule,
+    MatTooltipModule,
     HttpClientModule
   ],
   providers: [],

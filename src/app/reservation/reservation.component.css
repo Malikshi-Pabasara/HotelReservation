@@ -9,35 +9,85 @@
   background-color: #041A32;
 }
 .nav-link {
-    padding-right: 3rem !important;
-    font-weight: bold;
-  }
-  a:hover {
-    background-color: #07325f;
-  }
+  padding-right: 3rem !important;
+  font-weight: bold;
+}
+a:hover {
+  background-color: #07325f;
+}
+button{
+  background-color: white;
+  color: black;
+  border: none;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0%;
+}
+button:hover {
+  background-color: #07325f;
+}
+.example-spacer {
+  padding-left: 3rem !important;
+}
+bar{
+  display: table-cell;
+  vertical-align: middle;
+}
+.form-control me-2{
+  width: 10%;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+mat-toolbar mat-icon{
+  background-color: #000; 
+  color:#fff;
+}
+.mat-toolbar{
+  background-color: #fff;
+}
+.paginator{
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  margin-right: 0;
+  margin-left:auto;
+  float:right;
+  color: #6C6969;
+  font-weight: bold;
+}
+.paginator /deep/ .ngx-pagination .current {
+  background: rgb(255, 100, 0);
+  border-radius: 4px;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+.modal-footer button{
+  background-color: #B21313; 
+  color: #fff;
+}
+.card{
+  border: none;  
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2); 
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.checkIn {
+  color: #30A03B;
+  margin-right: 15px;
+}
+.checkOut {
+  color: #30A03B;
+  margin-right: 15px;
+}
+.editIcon {
+  color: #000;
+  margin-right: 15px;
+}
+.deleteIcon{
+  color:#B21313;
+  margin-right: 15px;
+}
+.click{
+  color:#B21313;
+  margin-right: 15px;
+}
 
-  button{
-      background-color: white;
-      color: black;
-      border: none;
-      box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
-      border-radius: 0%;
-  }
-  button:hover {
-    background-color: #07325f;
-  }
-  .example-spacer {
-    padding-left: 3rem !important;
-  }
-
-  bar{
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  
-  .form-control me-2{
-    width: 10%;
-  }
-  
-  

@@ -1,4 +1,4 @@
-.header{
+.header {
   font-family: Sarpanch;
   text-align: left;
   color: rgb(255, 100, 0);
@@ -25,24 +25,24 @@ a:hover {
   background-color: #07325f;
 }
   
-.form-control me-2{
+.form-control me-2 {
   width: 10%;
 }
-.leftPart{
+#sidebar {
   height: 540Px;
   background-color: #F2F0F0;
   text-align:center;
 }
-.btn{
-  width: 200px;
-  height: 60px;
+.btn {
+  width: 180px;
+  height: 55px;
 }
 
-.bar{
+.bar {
   display: table-cell;
   vertical-align: middle;
 }
-button{
+button {
   background-color: white;
   color: black;
   border: none;
@@ -53,31 +53,34 @@ button{
   color: #FF6400;  
   box-shadow: 0 1px 8px 0 #FF6400;
 }
-button:hover {
+.click {
   color: #FF6400;  
   box-shadow: 0 1px 8px 0 #FF6400;
+  border: none;
+  width: 180px;
+  height: 55px;
 }
 .example-spacer {
   flex: 1 1 auto;
 }
-mat-toolbar mat-icon{
+mat-toolbar mat-icon {
   background-color: #000; 
   color:#fff;
 }
-p mat-toolbar{
+p mat-toolbar {
   background-color: #F2F0F0;
 }
-.toolbar{
+.toolbar {
   background-color: #fff;
 }
-.icon{
+#icon {
   float: right;
   display : none;
 }
-.roomtypebtn:hover .icon{
+.roomtypebtn:hover #icon {
   display : inline-block;
 }
-.deletebtn{
+.deletebtn {
   background-color: #B21313; 
   color: #fff;
 }
@@ -92,15 +95,43 @@ p mat-toolbar{
       "main";
   }
 }
-@media (max-width: 834px) {
-  .btn{
+@media (max-width: 1300px) {
+  .btn {
     width: 150px;
     height: 60px;
   }
 }
-@media (max-width: 834px) {
-  .btn{
-    width: 150px;
+@media (max-width: 1020px) {
+  .btn {
+    width: 100px;
     height: 60px;
   }
+  #icon {
+    right: 1px;
+    position: absolute;
+
+  }
+}
+@media (max-width: 767px) {
+  .btn {
+    width: 200px;
+    height: 60px;
+  }
+  #icon {
+    right: 1px;
+    position: absolute;
+
+  }
+}
+.container-fluid {
+  width: 100%;
+}
+.roomtypebtn {
+  position: relative;
+  margin-right: 10px;
+}
+#icon {
+  right: 2px;
+  position: absolute;
+
 }

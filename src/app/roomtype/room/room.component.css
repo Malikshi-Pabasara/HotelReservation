@@ -1,7 +1,7 @@
 a:hover {
   background-color: #07325f;
 }
-button{
+button {
   background-color: white;
   color: black;
   border: none;
@@ -15,14 +15,14 @@ button:hover {
 .example-spacer {
   flex: 1 1 auto;
 }
-mat-toolbar mat-icon{
+mat-toolbar mat-icon {
   background-color: #000; 
   color:#fff;
 }
-p mat-toolbar{
+p mat-toolbar {
   background-color: #fff;
 }
-bar{
+bar {
   display: table-cell;
   vertical-align: middle;
 }
@@ -30,13 +30,13 @@ table {
   table-layout: fixed;
   word-wrap: break-word;
 }
-.card{
+.card {
   border: none;  
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2); 
   margin-left: 20px;
   margin-right: 20px;
 }
-.deletebtn{
+.deletebtn {
   background-color: #B21313; 
   color: #fff;
 }

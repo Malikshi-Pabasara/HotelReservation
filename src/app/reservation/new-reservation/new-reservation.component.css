@@ -1,0 +1,46 @@
+.header{
+    font-family: Sarpanch;
+    text-align: left;
+    color: rgb(255, 100, 0);
+    font-size: larger;
+    width: 65%;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #041A32;
+  }
+  .nav-link {
+    padding-right: 3rem !important;
+    font-weight: bold;
+  }
+  a:hover {
+    background-color: #07325f;
+  }
+  button{
+    background-color: white;
+    color: black;
+    border: none;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0%;
+  }
+  button:hover {
+    background-color: #07325f;
+  }
+  .example-spacer {
+    padding-left: 3rem !important;
+  }
+  bar{
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .form-control me-2{
+    width: 10%;
+  }
+  .reservationListBtn {
+    width: 150px;
+    color: #6C6969;
+    font-weight: bold;
+    height: 40px;
+    
+  }
+  
+  

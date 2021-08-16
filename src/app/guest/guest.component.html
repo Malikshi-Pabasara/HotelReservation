@@ -42,25 +42,22 @@
     </div>
   </div>
 </nav>
-<br>
 
-<!-- Button add modal -->
-<p>
-  <mat-toolbar>
+  <!-- Button add modal -->
+  <mat-toolbar class="mat-toolbar">
   <span class="example-spacer"></span>
-      <mat-icon (click)="open(content3)" (click)="clearModalData()" >add</mat-icon>
+      <mat-icon (click)="open(AddGuestModal)" (click)="clearModalData()" >add</mat-icon>
   </mat-toolbar>
-</p>
 
 <!--Add Modal -->
-<ng-template #content3 let-modal>
+<ng-template #AddGuestModal let-modal>
   <div class="modal-header">
-      <button (click)="modal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
+    <button (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <h1 class="modal-title" id="staticBackdropLabel"><b>Guest Details</b></h1>
+    <h1 class="modal-title" id="staticBackdropLabel"><b>Guest Details</b></h1><br>
     <form [formGroup]="Guestform">
       <div class="form-group mb-3">
         <label>Full Name :</label>
@@ -68,7 +65,7 @@
         <span class="error" *ngIf="validation.Name.invalid && validation.Name.touched" >
           <small>  Name is required!</small>
         </span>
-    </div>
+      </div>
       <div class="form-group mb-3 form-row">
         <label >Phone Number :</label>
         <input type="text" class="form-control" formControlName="PhoneNo">
@@ -103,6 +100,7 @@
           Is active?
         </label>
       </div>
+      <br>
     </form>
   </div>
   <div class="modal-footer">
@@ -113,116 +111,116 @@
 <!--Data Table -->
 <div class="card" >
   <div class="card-body">
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Status</th>
-      <th scope="col">Name</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">Date of Birth</th>
-      <th scope="col">ID Number</th>
-      <th scope="col">Email</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Status</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">ID Number</th>
+          <th scope="col">Email</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
   
-  <tbody>
-    <tr *ngFor = "let guest of guests | filter:searchText | paginate: {itemsPerPage : 5, currentPage:page};" >
-      <td data-label="Status" > <mat-icon [ngStyle]="{'color': guest.IsActive? '#143E18' : '#6B1111'}">stars</mat-icon></td>
-      <td data-label="Name" > <span>{{ guest.Name }}</span></td>
-      <td data-label="Phone Number" ><span>{{ guest.PhoneNo }}</span></td>
-      <td data-label="Date of Birth" ><span>{{ guest.DateOfBirth | date: 'dd/MMM/yy'}}</span></td>
-      <td data-label="ID Number" ><span>{{ guest.IdNo }}</span></td>
-      <td data-label="Email" ><span>{{ guest.Email }}</span></td>
-      <td data-label="Action" ><span>
-        <mat-icon (click)="open(content1)" style="color: #000;">edit</mat-icon>
+      <tbody>
+        <tr *ngFor = "let guest of guests | filter:searchText | paginate: {itemsPerPage : 5, currentPage:page};" >
+          <td data-label="Status" > <mat-icon [ngStyle]="{'color': guest.IsActive? '#143E18' : '#6B1111'}">lens</mat-icon></td>
+          <td data-label="Name" > <span>{{ guest.Name }}</span></td>
+          <td data-label="Phone Number" ><span>{{ guest.PhoneNo }}</span></td>
+          <td data-label="Date of Birth" ><span>{{ guest.DateOfBirth | date: 'dd/MMM/yy'}}</span></td>
+          <td data-label="ID Number" ><span>{{ guest.IdNo }}</span></td>
+          <td data-label="Email" ><span>{{ guest.Email }}</span></td>
+          <td data-label="Action" ><span>
+            <mat-icon (click)="open(updateGuestModal)" style="color: #000;">edit</mat-icon>
 
-        <!--Edit Modal -->
-        <ng-template #content1 let-modal>
-          <div class="modal-header">
-              <button  (click)="cancel()" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <h1 class="modal-title" id="staticBackdropLabel"><b>Guest Details</b></h1>
-            <form [formGroup]="Guestform">
-              <div class="form-group mb-3">
-                <label>Full Name :</label>
-                <input type="text" required  [(ngModel)]="guest.Name" class="form-control" id="inputName" formControlName="Name">
-                <span class="error" *ngIf="validation.Name.invalid && validation.Name.touched" >
-                  <small>  Name is required!</small>
-                </span>
-            </div>
-              <div class="form-group mb-3 form-row">
-                <label>Phone Number :</label>
-                <input type="text" [(ngModel)]="guest.PhoneNo" class="form-control" id="inputPhoneNumber" formControlName="PhoneNo">
-                <span class="error" *ngIf="validation.PhoneNo.invalid && validation.PhoneNo.touched" >
-                  <small>Number is required! (max length 10)</small> 
-                </span>
+            <!--Edit Modal -->
+            <ng-template #updateGuestModal let-modal>
+              <div class="modal-header">
+                <button  (click)="cancel()" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="form-group mb-3 form-row middle">
-                <label>Date of Birth :</label>
-                <input type="date" class="form-control" [(ngModel)]="guest.DateOfBirth" id="inputDoB" formControlName="DateOfBirth" >
-                <span class="error" *ngIf="validation.DateOfBirth.invalid && validation.DateOfBirth.touched" >
-                  <small>Date Of Birth is required!</small>
-                </span>
+              <div class="modal-body">
+                <h1 class="modal-title" id="staticBackdropLabel"><b>Guest Details</b></h1><br>
+                <form [formGroup]="Guestform">
+                  <div class="form-group mb-3">
+                    <label>Full Name :</label>
+                    <input type="text" required  [(ngModel)]="guest.Name" class="form-control" id="inputName" formControlName="Name">
+                    <span class="error" *ngIf="validation.Name.invalid && validation.Name.touched" >
+                      <small>  Name is required!</small>
+                    </span>
+                  </div>
+                  <div class="form-group mb-3 form-row">
+                    <label>Phone Number :</label>
+                    <input type="text" [(ngModel)]="guest.PhoneNo" class="form-control" id="inputPhoneNumber" formControlName="PhoneNo">
+                    <span class="error" *ngIf="validation.PhoneNo.invalid && validation.PhoneNo.touched" >
+                      <small>Number is required! (max length 10)</small> 
+                    </span>
+                  </div>
+                  <div class="form-group mb-3 form-row middle">
+                    <label>Date of Birth :</label>
+                    <input type="date" class="form-control" [(ngModel)]="guest.DateOfBirth" id="inputDoB" formControlName="DateOfBirth" >
+                    <span class="error" *ngIf="validation.DateOfBirth.invalid && validation.DateOfBirth.touched" >
+                      <small>Date Of Birth is required!</small>
+                    </span>
+                  </div>
+                  <div class="form-group mb-3 form-row">
+                    <label>ID Number :</label>
+                    <input type="text" class="form-control" id="inputIDNumber" [(ngModel)]="guest.IdNo" formControlName="IdNo">
+                    <span class="error" *ngIf="validation.IdNo.invalid && validation.IdNo.touched" >
+                      <small>ID is required! (max length 10)</small> 
+                    </span>
+                  </div>
+                  <div class="form-group mb-3 form-row middle" >
+                    <label>Email :</label>
+                    <input type="email" class="form-control" id="inputEmail" [(ngModel)]="guest.Email" formControlName="Email">
+                    <span class="error" *ngIf="validation.Email.invalid && validation.Email.touched" >
+                      <small>Valid Email is required!</small> 
+                    </span>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="guest.IsActive" formControlName="IsActive">
+                    <label class="form-check-label" for="gridCheck">
+                      Is active?
+                    </label>
+                  </div>
+                  <br>
+                </form>
               </div>
-              <div class="form-group mb-3 form-row">
-                <label>ID Number :</label>
-                <input type="text" class="form-control" id="inputIDNumber" [(ngModel)]="guest.IdNo" formControlName="IdNo">
-                <span class="error" *ngIf="validation.IdNo.invalid && validation.IdNo.touched" >
-                  <small>ID is required! (max length 10)</small> 
-                </span>
+              <div class="modal-footer">
+                <button  id="Cancel" type="button" class="btn btn-outline-dark" (click)="cancel()"  (click)="modal.close('Save click')">Cancel</button>
+              
+                <button id="btn" type="button" [disabled]="Guestform.invalid" class="btn btn-outline-dark" (click)="UpdateGuest(guest.id)" (click)="modal.close('Save click')">Update</button>
+              
               </div>
-              <div class="form-group mb-3 form-row middle" >
-                <label>Email :</label>
-                <input type="email" class="form-control" id="inputEmail" [(ngModel)]="guest.Email" formControlName="Email">
-                <span class="error" *ngIf="validation.Email.invalid && validation.Email.touched" >
-                  <small>Valid Email is required!</small> 
-                </span>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck" [(ngModel)]="guest.IsActive" formControlName="IsActive">
-                <label class="form-check-label" for="gridCheck">
-                  Is active?
-                </label>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button  id="Cancel" type="button" class="btn btn-outline-dark" (click)="cancel()"  (click)="modal.close('Save click')">Cancel</button>
-          
-            <button id="btn" type="button" [disabled]="Guestform.invalid" class="btn btn-outline-dark" (click)="UpdateGuest(guest.id)" (click)="modal.close('Save click')">Update</button>
-           
-          </div>
-        </ng-template>
+            </ng-template>
 
-        <mat-icon  (click)="open(content2)"  style="color:#B21313; margin-left: 15px;">delete</mat-icon>
+            <mat-icon  (click)="open(deleteGuestModal)"  style="color:#B21313; margin-left: 15px;">delete</mat-icon>
         
-        <!--Delete msg Modal -->
-        <ng-template #content2 let-modal>
-          <div class="modal-header">
-            <h2 class="modal-title" id="staticBackdropLabel" style="color: #B21313;"><b>Confirmation</b></h2>
-              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Are you sure to delete this guest ?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="deleteRow(guest.id)" (click)="modal.close('Delete click')">Delete</button>
-          </div>
-        </ng-template>
-      </span>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <br>
-  <pagination-controls (pageChange) = "page = $event" class="paginator"></pagination-controls>
-  
-</div>
+            <!--Delete msg Modal -->
+            <ng-template #deleteGuestModal let-modal>
+              <div class="modal-header">
+                <h2 class="modal-title" id="staticBackdropLabel" style="color: #B21313;"><b>Confirmation</b></h2>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Are you sure to delete this guest ?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="deleteRow(guest.id)" (click)="modal.close('Delete click')">Delete</button>
+              </div>
+            </ng-template>
+          </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <pagination-controls (pageChange) = "page = $event" class="paginator"></pagination-controls>
+  </div>
 </div>
 

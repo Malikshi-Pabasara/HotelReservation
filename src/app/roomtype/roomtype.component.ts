@@ -24,19 +24,20 @@ export class RoomtypeComponent implements OnInit {
     private roomtypeService : RoomtypeService,
   ) {
     this.Roomtypeform = this.fb.group({
-      id: new FormControl('',  Validators.required),
+      id: new FormControl(''),
       Name: new FormControl('', Validators.required),
       Code: new FormControl('', Validators.required)
-  })
+    });
   }
 
-  get validation(){
+  get validation() {
     return this.Roomtypeform.controls;
   }
 
   ngOnInit(): void {
     this.roomtypeService.getAllRoomType().subscribe((response) => {
       this.roomtypes = response;
+      this.getId(this.roomtypes[0].id);
     });
   }
   submitForm() {
@@ -54,11 +55,12 @@ export class RoomtypeComponent implements OnInit {
     )
   };
 
-  deleteRow(){
+  deleteRow() {
     this.roomtypeService.deleteRoomType(this.RoomTypeID).subscribe((response) => {
         this.roomtypeService.getAllRoomType().subscribe(
           (response) => {
             this.roomtypes = response;
+            this.getId(this.roomtypes[0].id);
           },
           (error) => console.log(error)
         );
@@ -67,7 +69,7 @@ export class RoomtypeComponent implements OnInit {
     )
   };
 
-  UpdateRoom(id:string){
+  UpdateRoom(id: string) {
     this.roomtypeService.UpdateRoomtype(id,this.Roomtypeform.value).subscribe((response) => {
         this.roomtypeService.getAllRoomType().subscribe(
           (response) => {
@@ -81,16 +83,16 @@ export class RoomtypeComponent implements OnInit {
     )
   };
 
-  getDAta(id:string ){
-    this.RoomTypeID=id;
+  getDAta(id: string ) {
+    this.RoomTypeID = id;
   }
 
-  cancel(){
+  cancel() {
     this.ngOnInit()
   }
 
   open(content: any) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
     })
   }
 
@@ -107,4 +109,8 @@ export class RoomtypeComponent implements OnInit {
   clearModalData() {
     this.Roomtypeform.reset();
   } 
+
+  getId(id:string) {
+    this.RoomTypeID=id;
+  }
 }

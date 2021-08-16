@@ -9,13 +9,13 @@ import { environment } from "src/environments/environment";
     providedIn: 'root',
 })
 
-export class RoomtypeService{
+export class RoomtypeService {
     
     contactsBaseUrl: string = environment.serverBaseUrl  + '/roomTypes';
     constructor(private http : HttpClient, private router: Router, public fb: FormBuilder){
     }
 
-    getAllRoomType(){
+    getAllRoomType() {
       return this.http.get<Roomtype[]>(this.contactsBaseUrl);
     } 
     deleteRoomType(id: string) {
@@ -25,7 +25,7 @@ export class RoomtypeService{
       return this.http.post(this.contactsBaseUrl , formData);
     }
 
-    UpdateRoomtype(id:string, formData: any){
+    UpdateRoomtype(id:string, formData: any) {
       return this.http.put (this.contactsBaseUrl + '/' + id, formData);
     }
 }

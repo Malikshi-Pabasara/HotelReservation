@@ -19,7 +19,7 @@ export class RoomComponent implements OnInit {
   status = 'Enable'; 
   Roomform: FormGroup;
   searchText: any;
-  page:number = 1;
+  page: number = 1;
   rooms: Room[] = [];
  
   constructor(
@@ -38,7 +38,7 @@ export class RoomComponent implements OnInit {
   })
   }
 
-  get validation(){
+  get validation() {
     return this.Roomform.controls;
   }
   
@@ -49,7 +49,7 @@ export class RoomComponent implements OnInit {
     });
   }
 
-  deleteRow(id:string){
+  deleteRow(id:string) {
     this.roomService.deleteRoom(id).subscribe((response) => {
         this.roomService.getAllRooms().subscribe(
           (response) => {
@@ -77,7 +77,7 @@ export class RoomComponent implements OnInit {
     )
   };
 
-  UpdateRoom(id:string){
+  UpdateRoom(id:string) {
     this.roomService.UpdateRoom(id,this.Roomform.value).subscribe((response) => {
         this.roomService.getAllRooms().subscribe(
           (response) => {
@@ -108,5 +108,8 @@ export class RoomComponent implements OnInit {
 
   clearModalData() {
     this.Roomform.reset();
+  }
+  cancel() {
+    this.ngOnInit()
   }
 }

@@ -47,8 +47,8 @@
   color: #fff;
 }
 .img{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     position: absolute; 
     top: 20%;
 }
@@ -102,9 +102,13 @@ body {
     font-weight: bold;
     text-align: left;
   }
-
 }
-
+table th{
+  color: #6C6969;
+}
+table td{
+  color: #6C6969;
+}
 .modal{
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 0;
@@ -135,9 +139,10 @@ body {
 #btn:hover {
   background-color: #07325f;
 }
-
 .modal-footer button{
   width: 85px;
   height: 40px;
 }
-  
+icon , mat-icon {
+  cursor: pointer;
+}

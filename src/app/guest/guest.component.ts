@@ -6,7 +6,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Validators } from '@angular/forms';
 
-@Component({
+@Component( {
   selector: 'app-guest',
   templateUrl: './guest.component.html',
   styleUrls: ['./guest.component.css']
@@ -35,7 +35,7 @@ export class GuestComponent implements OnInit {
   })
   }
 
-  get validation(){
+  get validation() {
     return this.Guestform.controls;
   }
 
@@ -46,7 +46,7 @@ export class GuestComponent implements OnInit {
     });
   }
 
-  deleteRow(id:string){
+  deleteRow(id:string) {
     this.guestService.deleteGuest(id).subscribe((response) => {
         this.guestService.getAllContacts().subscribe(
           (response) => {
@@ -76,7 +76,7 @@ export class GuestComponent implements OnInit {
     )
   };
 
-  UpdateGuest(id:string){
+  UpdateGuest(id:string) {
     this.guestService.UpdateGuest(id,this.Guestform.value).subscribe((response) => {
         this.guestService.getAllContacts().subscribe(
           (response) => {
@@ -110,7 +110,7 @@ export class GuestComponent implements OnInit {
     this.Guestform.reset();
   } 
 
-  cancel(){
+  cancel() {
     this.ngOnInit()
   }
 }
