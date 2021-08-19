@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
-import { login } from './login';
 import { Validators } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 
@@ -20,16 +19,19 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  get validation(){
+  get validation() { 
     return this.Loginform.controls;
   }
 
   ngOnInit(): void {
   }
 
-  login(){
-    //this.authService.login(email, password)
-   // console.log(this.Loginform.value)
+  login() {
+    this.authService.submitForm(this.Loginform.value).subscribe(
+      (response) => {
+          this.Loginform.reset();
+        },
+      (error) => console.log(error)
+    )
   }
- 
 }

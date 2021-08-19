@@ -3,27 +3,29 @@
         <div class="card-body">
             <form [formGroup]="Loginform">
                 <div class="mb-3">
-                    <h1 class= "header1">Prism System  </h1>
+                    <h1 class= "header1 input">Prism System  </h1>
                     <br>
-                    <input type="email" placeholder="User Email" class="form-control" formControlName="email" >
+                    <input type="email" placeholder="User Email" class="form-control input" formControlName="email" >
                     <span class="error" *ngIf="validation.email.invalid && validation.email.touched" >
                         <small>  email is required!</small>
-                      </span>
+                    </span>
                 </div>
+                <div></div>
                 <div class="mb-3">
-                    <input type="password" placeholder="password" class="form-control" formControlName="password" >
+                    <input type="password" placeholder="password" class="form-control input" formControlName="password" >
                     <span class="error" *ngIf="validation.password.invalid && validation.password.touched" >
                         <small>  Password is required!</small>
-                      </span>
+                    </span>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input">
                     <label class="form-check-label" for="exampleCheck1">Remember Me</label>
                 </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary" class="submit" (click)="login()" routerLink="/roomtype">Login</button>
-                    <br><br>
+                <br>
+                <button type="submit" class="btn btn-primary submit" (click)="login()" routerLink="/reservation">Login</button>
+                <br><br>
             </form>
         </div>
     </div>
-</div>   
+</div>
+

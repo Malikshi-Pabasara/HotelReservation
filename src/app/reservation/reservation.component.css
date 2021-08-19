@@ -1,4 +1,4 @@
-.header{
+.header {
   font-family: Sarpanch;
   text-align: left;
   color: rgb(255, 100, 0);
@@ -15,7 +15,7 @@
 a:hover {
   background-color: #07325f;
 }
-button{
+button {
   background-color: white;
   color: black;
   border: none;
@@ -28,24 +28,24 @@ button:hover {
 .example-spacer {
   padding-left: 3rem !important;
 }
-bar{
+.bar {
   display: table-cell;
   vertical-align: middle;
 }
-.form-control me-2{
+.form-control me-2 {
   width: 10%;
 }
 .example-spacer {
   flex: 1 1 auto;
 }
-mat-toolbar mat-icon{
+mat-toolbar mat-icon {
   background-color: #000; 
   color:#fff;
 }
-.mat-toolbar{
+.mat-toolbar {
   background-color: #fff;
 }
-.paginator{
+.paginator {
   font-family: 'Lato', sans-serif;
   font-size: 15px;
   margin-right: 0;
@@ -60,34 +60,60 @@ mat-toolbar mat-icon{
   padding-left: 9px;
   padding-right: 9px;
 }
-.modal-footer button{
+.modal-footer button {
   background-color: #B21313; 
   color: #fff;
 }
-.card{
+.card {
   border: none;  
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2); 
   margin-left: 20px;
   margin-right: 20px;
 }
-.checkIn {
+.availableIcon {
   color: #30A03B;
   margin-right: 15px;
 }
-.checkOut {
-  color: #30A03B;
+.disable {
+  color: #515351;
   margin-right: 15px;
 }
 .editIcon {
   color: #000;
   margin-right: 15px;
 }
-.deleteIcon{
+.deleteIcon {
   color:#B21313;
   margin-right: 15px;
 }
-.click{
+.click {
   color:#B21313;
   margin-right: 15px;
 }
-
+form input {
+  border-radius: 0;
+  outline: none;
+  border: 0;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+  color: #6C6969;
+  font-size: 14px;
+}
+textarea:focus, input:focus {
+  outline: none;
+}
+.form-row {
+  display: inline-block;
+  width: 222px;
+}
+.middle {
+  margin-left: 20px;
+}
+/* guest add update modal responsive*/
+@media(max-width: 576px) {    
+  .form-row {
+    width: 100%;
+  }
+  .middle {
+    margin-left: 0px;
+  }
+}

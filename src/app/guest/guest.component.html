@@ -35,7 +35,7 @@
     </div>
 
     <div class="input-group rounded search">
-      <input type="search" class="form-control searchBox" placeholder="Search" [(ngModel)]="searchText"  />
+      <input type="search" class="form-control searchBox" placeholder="Search" [(ngModel)]="searchText"/>
       <span id="searchIcon" class="input-group-text border-0">
         <i class="fas fa-search"></i>
       </span>
@@ -43,11 +43,11 @@
   </div>
 </nav>
 
-  <!-- Button add modal -->
-  <mat-toolbar class="mat-toolbar">
+<!-- Button add modal -->
+<mat-toolbar class="mat-toolbar">
   <span class="example-spacer"></span>
-      <mat-icon (click)="open(AddGuestModal)" (click)="clearModalData()" >add</mat-icon>
-  </mat-toolbar>
+  <mat-icon (click)="open(AddGuestModal)" (click)="clearModalData()" >add</mat-icon>
+</mat-toolbar>
 
 <!--Add Modal -->
 <ng-template #AddGuestModal let-modal>
@@ -191,9 +191,7 @@
               </div>
               <div class="modal-footer">
                 <button  id="Cancel" type="button" class="btn btn-outline-dark" (click)="cancel()"  (click)="modal.close('Save click')">Cancel</button>
-              
-                <button id="btn" type="button" [disabled]="Guestform.invalid" class="btn btn-outline-dark" (click)="UpdateGuest(guest.id)" (click)="modal.close('Save click')">Update</button>
-              
+                <button id="btn" type="button" [disabled]="Guestform.invalid" class="btn btn-outline-dark" (click)="updateGuest(guest.id)" (click)="modal.close('Save click')">Update</button>
               </div>
             </ng-template>
 

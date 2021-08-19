@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Reservation } from './reservation';
 import {ReservationService} from './reservation.service'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Validators } from '@angular/forms';
+import { GuestService } from 'src/app/guest/guest.service';
+import { RoomService } from '../roomtype/room/room.service';
+import { Room } from '../roomtype/room/room';
+import { Guest } from '../guest/guest';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-reservation',
@@ -12,16 +16,18 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
-
+  disableMessage = true;
   Reservationform: FormGroup;
   searchText: any;
   page:number = 1;
+  guests: Guest[] = [];
+  rooms: Room[] = [];
   reservations: Reservation[] = [];
-  reservationID! : string;
-
+  
   constructor(
     private reservationService : ReservationService,
-    private router: Router,
+    private guestService : GuestService,
+    private roomService : RoomService,
     private modalService: NgbModal,
     public fb: FormBuilder
   ) {
@@ -33,29 +39,42 @@ export class ReservationComponent implements OnInit {
       ArrivalDate: new FormControl('' , Validators.required), 
       DepartureDate: new FormControl('', Validators.required),
       Notes: new FormControl(''),
-  })
-   }
-  get validation(){
+      Status: new FormControl('')
+    });
+  }
+  get validation() {
   return this.Reservationform.controls;
   }
 
   ngOnInit(): void {
-    this.reservationService.getOrders().subscribe((response) => {
-      this.reservations = response;
+    
+    forkJoin({
+      guestResponse: this.guestService.getAllContacts(),
+      roomResponse: this.roomService.getAllRooms(),
+      reservationResponse: this.reservationService.getOrders()
+    })
+    .subscribe((response) => {
+      this.guests = response.guestResponse;
+      this.rooms = response.roomResponse;
+      this.reservations = response.reservationResponse.map(reservation => {
+        const room = this.rooms.find(r => r.id == reservation.RoomId);
+        reservation.RoomNo = room != undefined ? room.RoomNo : 'NA';
+        const email = this.guests.find(e => e.id == reservation.GuestId);
+        reservation.GuestEmail = email != undefined ? email.Email : 'NA';
+        const guest = this.guests.find(g => g.id == reservation.GuestId);
+        reservation.GuestName = guest != undefined ? guest.Name : 'NA';
+
+        return reservation;
+      });
     });
   }
   deleteRow(id:string){
     this.reservationService.deleteOrder(id).subscribe((response) => {
-        this.reservationService.getOrders().subscribe(
-          (response) => {
-            this.reservations = response;
-          },
-          (error) => console.log(error)
-        );
+      this.ngOnInit();
       },
       (error) => console.log(error)
     )
-  };
+  }
       
   submitForm() {
     this.reservationService.submitForm(this.Reservationform.value).subscribe(
@@ -70,21 +89,15 @@ export class ReservationComponent implements OnInit {
       },
       (error) => console.log(error)
     )
-  };
+  }
 
   UpdateGuest(id:string){
     this.reservationService.UpdateOrder(id,this.Reservationform.value).subscribe((response) => {
-        this.reservationService.getOrders().subscribe(
-          (response) => {
-            this.reservations = response;
-            this.Reservationform.reset();
-          },
-          (error) => console.log(error)
-        );
+       this.ngOnInit();
       },
       (error) => console.log(error)
     )
-  };
+  }
   
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -109,8 +122,24 @@ export class ReservationComponent implements OnInit {
     this.ngOnInit()
   }
 
-  getId(id:string){
-    this.reservationID = id;
+  checkIn(id:string){
+    const reservation = this.reservations.find(r => r.id == id);
+    if(reservation != undefined){
+      reservation.Status= "Checked In";
+      this.reservationService.UpdateOrder(id,reservation).subscribe((response) => {
+        this.ngOnInit();
+      },
+      (error) => console.log(error)
+    )}
   }
-
+  checkOut(id:string){
+    const reservation = this.reservations.find(r => r.id == id);
+    if(reservation != undefined){
+      reservation.Status= "Checked Out";
+      this.reservationService.UpdateOrder(id,reservation).subscribe((response) => {
+        this.ngOnInit();
+      },
+      (error) => console.log(error)
+    )}
+  }
 }

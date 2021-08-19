@@ -32,7 +32,7 @@ export class GuestComponent implements OnInit {
       IdNo: new FormControl('' , [ Validators.required, Validators.maxLength(10)]), 
       Email: new FormControl('', [Validators.required, Validators.email]),
       IsActive: new FormControl(''),
-  })
+    });
   }
 
   get validation() {
@@ -40,7 +40,6 @@ export class GuestComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.guestService.getAllContacts().subscribe((response) => {
       this.guests = response;
     });
@@ -58,7 +57,7 @@ export class GuestComponent implements OnInit {
       },
       (error) => console.log(error)
     )
-  };
+  }
       
   submitForm() {
     this.guestService.submitForm(this.Guestform.value).subscribe(
@@ -74,10 +73,10 @@ export class GuestComponent implements OnInit {
       },
       (error) => console.log(error)
     )
-  };
+  }
 
-  UpdateGuest(id:string) {
-    this.guestService.UpdateGuest(id,this.Guestform.value).subscribe((response) => {
+  updateGuest(id:string) {
+    this.guestService.updateGuest(id,this.Guestform.value).subscribe((response) => {
         this.guestService.getAllContacts().subscribe(
           (response) => {
             this.guests = response;
@@ -89,7 +88,7 @@ export class GuestComponent implements OnInit {
       },
       (error) => console.log(error)
     )
-  };
+  }
   
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -108,7 +107,7 @@ export class GuestComponent implements OnInit {
 
   clearModalData() {
     this.Guestform.reset();
-  } 
+  }
 
   cancel() {
     this.ngOnInit()

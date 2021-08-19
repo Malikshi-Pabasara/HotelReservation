@@ -40,3 +40,14 @@ table {
   background-color: #B21313; 
   color: #fff;
 }
+form input {
+  border-radius: 0;
+  outline: none;
+  border: 0;
+  color: #6C6969;
+  font-size: 14px;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+}
+textarea:focus, input:focus {
+  outline: none;
+}

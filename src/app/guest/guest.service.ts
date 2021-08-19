@@ -12,7 +12,7 @@ import { environment } from "src/environments/environment";
 export class GuestService {
     
     contactsBaseUrl: string = environment.serverBaseUrl + '/contacts';
-    constructor(private http : HttpClient, private router: Router, public fb: FormBuilder){
+    constructor(private http : HttpClient, private router: Router, public fb: FormBuilder) {
     }
 
     getAllContacts() {
@@ -27,7 +27,10 @@ export class GuestService {
       return this.http.post(this.contactsBaseUrl, formData);
     }
 
-    UpdateGuest(id:string, formData: any) {
+    updateGuest(id:string, formData: any) {
       return this.http.put (this.contactsBaseUrl + '/' + id, formData);
+    }
+    getOneGuest(id:string) {
+      return this.http.get<Guest[]> (this.contactsBaseUrl + '/' + id);
     }
 }

@@ -35,7 +35,7 @@ export class RoomComponent implements OnInit {
       RoomStatus: new FormControl('', Validators.required),
       RoomTypeId: new FormControl('', Validators.required),
       IsActive: new FormControl(''),
-  })
+    })
   }
 
   get validation() {
@@ -43,7 +43,6 @@ export class RoomComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    
     this.roomService.getAllRooms().subscribe((response) => {
       this.rooms = response;
     });
@@ -60,7 +59,7 @@ export class RoomComponent implements OnInit {
       },
       (error) => console.log(error)
     )
-  };      
+  } 
 
   submitForm() {
     this.roomService.submitForm(this.Roomform.value).subscribe(
@@ -75,7 +74,7 @@ export class RoomComponent implements OnInit {
       },
       (error) => console.log(error)
     )
-  };
+  }
 
   UpdateRoom(id:string) {
     this.roomService.UpdateRoom(id,this.Roomform.value).subscribe((response) => {
@@ -89,7 +88,7 @@ export class RoomComponent implements OnInit {
       },
       (error) => console.log(error)
     )
-  };
+  }
   
   open(content: any) {
     this.modalService.open(content, {size: 'sm', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

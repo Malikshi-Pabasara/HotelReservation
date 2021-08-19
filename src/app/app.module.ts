@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -17,8 +16,6 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import {NgSelectModule} from '@ng-select/ng-select';
-
-
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
@@ -28,6 +25,7 @@ import { AuthComponent } from './auth/auth.component';
 import { RoomtypeComponent } from './roomtype/roomtype.component';
 import { NewReservationComponent } from './reservation/new-reservation/new-reservation.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -41,7 +39,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     NewReservationComponent,
     
   ],
-
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,13 +52,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     FormsModule,
     FlexLayoutModule,
     NgSelectModule,
-
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
     MatTableModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

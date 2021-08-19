@@ -1,57 +1,57 @@
 <p>
-  <mat-toolbar>
-    <h4><b>Rooms Overview</b></h4>
-  <span class="example-spacer"></span>
-      <mat-icon (click)="open(addRoomModal)" (click)="clearModalData()" >add</mat-icon>
-  </mat-toolbar>
+    <mat-toolbar>
+        <h4><b>Rooms Overview</b></h4>
+    <span class="example-spacer"></span>
+        <mat-icon (click)="open(addRoomModal)" (click)="clearModalData()" >add</mat-icon>
+    </mat-toolbar>
 </p>
       
 <!-- Modal -->      
 <ng-template #addRoomModal let-modal >
-  <div class="modal-body">
-    <h2 class="text-center" ><b>Room Details</b></h2>
-    
-    <form [formGroup]="Roomform">
-      <div class="form-group mb-3">
-        <label>Room Number:</label>
-        <input type="text" class="form-control" formControlName="RoomNo">
-        <span class="error" *ngIf="validation.RoomNo.invalid && validation.RoomNo.touched" >
-          <small>  Room Number is required!</small>
-        </span>
-      </div>
-      <div class="form-group mb-3">
-        <label >Price :</label>
-        <input type="text" class="form-control" formControlName="Price">
-        <span class="error" *ngIf="validation.Price.invalid && validation.Price.touched" >
-          <small>Price is required!</small> 
-        </span>
-      </div>
-      <div class="form-group mb-3">
-        <label>Room Status :</label>
-        <input type="text" class="form-control" formControlName="RoomStatus" >
-        <span class="error" *ngIf="validation.RoomStatus.invalid && validation.RoomStatus.touched" >
-          <small>Room Status is required!</small>
-        </span>
-      </div> 
-      <div class="form-group mb-3">
-        <label>Room Type  Number :</label>
-        <input type="text" class="form-control" formControlName="RoomTypeId" >
-        <span class="error" *ngIf="validation.RoomTypeId.invalid && validation.RoomTypeId.touched" >
-          <small>Room Type Number is required!</small>
-        </span>
-      </div> 
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" formControlName="IsActive">
-        <label class="form-check-label" for="gridCheck">
-          Is active?
-        </label>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button  id="Cancel" type="button" (click)="modal.close('Save click')">Cancel</button>     
-    <button id="btn" type="button" [disabled]="Roomform.invalid" (click)="submitForm()" (click)="modal.close('Save click')">Save</button>
-  </div>
+    <div class="modal-body">
+        <h2 class="text-center" ><b>Room Details</b></h2>
+        
+        <form [formGroup]="Roomform">
+          <div class="form-group mb-3">
+            <label>Room Number:</label>
+            <input type="text" class="form-control" formControlName="RoomNo">
+            <span class="error" *ngIf="validation.RoomNo.invalid && validation.RoomNo.touched" >
+              <small>  Room Number is required!</small>
+            </span>
+          </div>
+          <div class="form-group mb-3">
+            <label >Price :</label>
+            <input type="text" class="form-control" formControlName="Price">
+            <span class="error" *ngIf="validation.Price.invalid && validation.Price.touched" >
+              <small>Price is required!</small> 
+            </span>
+          </div>
+          <div class="form-group mb-3">
+            <label>Room Status :</label>
+            <input type="text" class="form-control" formControlName="RoomStatus" >
+            <span class="error" *ngIf="validation.RoomStatus.invalid && validation.RoomStatus.touched" >
+              <small>Room Status is required!</small>
+            </span>
+          </div> 
+          <div class="form-group mb-3">
+            <label>Room Type  Number :</label>
+            <input type="text" class="form-control" formControlName="RoomTypeId" >
+            <span class="error" *ngIf="validation.RoomTypeId.invalid && validation.RoomTypeId.touched" >
+              <small>Room Type Number is required!</small>
+            </span>
+          </div> 
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="IsActive">
+            <label class="form-check-label" for="gridCheck">
+              Is active?
+            </label>
+          </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button  id="Cancel" type="button" (click)="modal.close('Save click')">Cancel</button>     
+      <button id="btn" type="button" [disabled]="Roomform.invalid" (click)="submitForm()" (click)="modal.close('Save click')">Save</button>
+    </div>
 </ng-template>
       
 <!--Data Table -->
