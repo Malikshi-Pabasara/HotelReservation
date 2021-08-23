@@ -50,7 +50,7 @@
       <p>
         <mat-toolbar>
           <span class="example-spacer"></span>
-          <mat-icon  (click)="open(addRoomTypeModal)" (click)="clearModalData() " >add</mat-icon>
+          <mat-icon  (click)="open(addRoomTypeModal)"  (click)="clearModalData() " >add</mat-icon>
         </mat-toolbar>
       </p>
       <!-- room type Add modal-->
@@ -58,13 +58,6 @@
         <div class="modal-body">
           <h2 class="text-center" ><b>Room Details</b></h2>
           <form [formGroup]="Roomtypeform">
-            <div class="form-group mb-3">
-              <label>Room Type Number:</label>
-              <input type="text" class="form-control" formControlName="id">
-              <span class="error" *ngIf="validation.id.invalid && validation.id.touched" >
-                <small>  Room Type Name is required!</small>
-              </span>
-            </div>
             <div class="form-group mb-3">
               <label>Room Type Name:</label>
               <input type="text" class="form-control" formControlName="Name">
@@ -89,7 +82,7 @@
 
       <!-- room type display-->     
       <div *ngFor = "let roomtype of roomtypes">
-        <button class="btn roomtypebtn" (click)="getId(roomtype.id)" [ngClass]="{'click': roomtype.id == RoomTypeID}"   ><b>{{roomtype.Name}}</b>
+        <button class="btn roomtypebtn" (click)="getId(roomtype.id)" (click)="getName(roomtype.Name)" [ngClass]="{'click': roomtype.id == RoomTypeID}"   ><b>{{roomtype.Name}}</b>
           <mat-icon  [matMenuTriggerFor]="menu" id="icon">more_vert</mat-icon>
           <mat-menu #menu="matMenu">
             <label mat-menu-item (click)="open(updateRoomTypeModal)">Edit</label>
@@ -142,7 +135,7 @@
     </div>
 
     <div class="col no-float" id="main">
-      <app-room [data]= "RoomTypeID" [search]="searchText"></app-room>
+      <app-room [data]= "RoomTypeID" [Name]= "RoomTypeName" [search]="searchText"></app-room>
     </div>
   </div>
 </div>

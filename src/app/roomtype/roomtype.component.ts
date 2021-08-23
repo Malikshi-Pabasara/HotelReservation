@@ -11,7 +11,7 @@ import { Roomtype } from "./roomtype";
   styleUrls: ['./roomtype.component.css']
 })
 export class RoomtypeComponent implements OnInit {
-
+  RoomTypeName!:string;
   RoomTypeID!: string;
   closeResult = '';
   Roomtypeform: FormGroup;
@@ -110,6 +110,9 @@ export class RoomtypeComponent implements OnInit {
     this.Roomtypeform.reset();
   } 
 
+  getName(name:string) {
+    this.RoomTypeName=name;
+  }
   getId(id:string) {
     this.RoomTypeID=id;
   }

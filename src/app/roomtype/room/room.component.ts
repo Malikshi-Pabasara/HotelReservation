@@ -14,7 +14,8 @@ import { Validators } from '@angular/forms';
 export class RoomComponent implements OnInit {
   @Input() data !:string; 
   @Input() search!:string;
-
+  @Input() Name!:string;
+  ID !:string;
   toggle = true;
   status = 'Enable'; 
   Roomform: FormGroup;
@@ -26,7 +27,7 @@ export class RoomComponent implements OnInit {
     private roomService : RoomService,
     private router: Router,
     private modalService: NgbModal,
-    public fb: FormBuilder
+    public fb: FormBuilder,
   ) {
     this.Roomform = this.fb.group({
       id: new FormControl(''),
@@ -45,7 +46,11 @@ export class RoomComponent implements OnInit {
   ngOnInit(): void {
     this.roomService.getAllRooms().subscribe((response) => {
       this.rooms = response;
+     
     });
+  }
+  setId(){
+    this.ID = this.data;
   }
 
   deleteRow(id:string) {

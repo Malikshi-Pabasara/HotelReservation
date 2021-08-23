@@ -74,7 +74,7 @@
                     <td data-label="Arrival Date" ><span>{{ reservation.ArrivalDate | date: 'dd/MMM/yy'}}</span></td>
                     <td data-label="Departure Date" ><span>{{ reservation.DepartureDate | date: 'dd/MMM/yy' }}</span></td>
                     <td data-label="Notes" ><span>{{ reservation.Notes }}</span></td>
-                    <td data-label="Notes" ><span>{{ reservation.Status }}</span></td>
+                    <td data-label="Status" ><span>{{ reservation.Status }}</span></td>
                     <td data-label="Action" ><span>
                         <mat-icon matTooltip="Check In" (click)="checkIn(reservation.id)" [ngClass]="reservation.Status == 'Confirmed' ? 'availableIcon' : 'disable'"  >input</mat-icon>
                         <mat-icon matTooltip="Check Out" (click)="open(checkOutModal)"  [ngClass]="reservation.Status == 'Checked In' ? 'availableIcon' : 'disable'">check_circle_outline</mat-icon>

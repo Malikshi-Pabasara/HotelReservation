@@ -63,7 +63,6 @@ export class ReservationComponent implements OnInit {
         reservation.GuestEmail = email != undefined ? email.Email : 'NA';
         const guest = this.guests.find(g => g.id == reservation.GuestId);
         reservation.GuestName = guest != undefined ? guest.Name : 'NA';
-
         return reservation;
       });
     });
