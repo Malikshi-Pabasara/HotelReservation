@@ -48,9 +48,6 @@ button:hover {
 .middle {
   margin-left: 20px;
 }
-.left {
-  margin-left: 380px;
-}
 /* guest add update modal responsive*/
 @media(max-width: 576px) {    
   .form-row {
@@ -58,9 +55,6 @@ button:hover {
   }
   .middle {
     margin-left: 0px;
-  }
-  .left {
-    margin-left: 0;
   }
 }
 .paginator {

@@ -25,8 +25,8 @@ export class RoomtypeComponent implements OnInit {
   ) {
     this.Roomtypeform = this.fb.group({
       id: new FormControl(''),
-      Name: new FormControl('', Validators.required),
-      Code: new FormControl('', Validators.required)
+      name: new FormControl('', Validators.required),
+      code: new FormControl('', Validators.required)
     });
   }
 

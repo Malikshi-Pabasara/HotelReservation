@@ -14,30 +14,30 @@
         <form [formGroup]="Roomform">
           <div class="form-group mb-3">
             <label>Room Number:</label>
-            <input type="text" class="form-control" formControlName="RoomNo">
-            <span class="error" *ngIf="validation.RoomNo.invalid && validation.RoomNo.touched" >
+            <input type="text" class="form-control" formControlName="roomNo">
+            <span class="error" *ngIf="validation.roomNo.invalid && validation.roomNo.touched" >
               <small>  Room Number is required!</small>
             </span>
           </div>
           <div class="form-group mb-3">
             <label >Price :</label>
-            <input type="text" class="form-control" formControlName="Price">
-            <span class="error" *ngIf="validation.Price.invalid && validation.Price.touched" >
+            <input type="text" class="form-control" formControlName="price">
+            <span class="error" *ngIf="validation.price.invalid && validation.price.touched" >
               <small>Price is required!</small> 
             </span>
           </div>
           <div class="form-group mb-3">
             <label>Room Status :</label>
-            <input type="text" class="form-control" formControlName="RoomStatus" >
-            <span class="error" *ngIf="validation.RoomStatus.invalid && validation.RoomStatus.touched" >
+            <input type="text" class="form-control" formControlName="roomStatus" >
+            <span class="error" *ngIf="validation.roomStatus.invalid && validation.roomStatus.touched" >
               <small>Room Status is required!</small>
             </span>
           </div> 
           <div class="form-group mb-3">
-            <input type="hidden" class="form-control" [(ngModel)]="ID" formControlName="RoomTypeId" >
+            <input type="hidden" class="form-control" [(ngModel)]="ID" formControlName="roomTypeId" >
           </div> 
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" formControlName="IsActive">
+            <input class="form-check-input" type="checkbox" formControlName="isActive">
             <label class="form-check-label" for="gridCheck">
               Is active?
             </label>
@@ -65,11 +65,11 @@
       </thead>
       <tbody>
         <tr *ngFor = "let room of rooms | filter:search">
-          <ng-container *ngIf="room.RoomTypeId == data ">
-            <td data-label="Status" > <mat-icon [ngStyle]="{'color': room.IsActive? '#143E18' : '#6B1111'}">lens</mat-icon></td>
-            <td data-label="Room No" > <span>{{ room.RoomNo }}</span></td>
-            <td data-label="Price" ><span>{{ room.Price }}</span></td>
-            <td data-label="Room Status"><span>{{ room.RoomStatus}}</span></td>
+          <ng-container *ngIf="room.roomTypeId == data ">
+            <td data-label="Status" > <mat-icon [ngStyle]="{'color': room.isActive? '#143E18' : '#6B1111'}">lens</mat-icon></td>
+            <td data-label="Room No" > <span>{{ room.roomNo }}</span></td>
+            <td data-label="Price" ><span>{{ room.price }}</span></td>
+            <td data-label="Room Status"><span>{{ room.roomStatus}}</span></td>
             <td data-label="Action"><span>
               <mat-icon (click)="open(updateRoomModal)" style="color: #000;">edit</mat-icon>
 
@@ -80,34 +80,34 @@
                   <form [formGroup]="Roomform">
                     <div class="form-group mb-3">
                       <label>Room Number:</label>
-                      <input type="text" class="form-control" [(ngModel)]="room.RoomNo" formControlName="RoomNo">
-                      <span class="error" *ngIf="validation.RoomNo.invalid && validation.RoomNo.touched" >
+                      <input type="text" class="form-control" [(ngModel)]="room.roomNo" formControlName="roomNo">
+                      <span class="error" *ngIf="validation.roomNo.invalid && validation.roomNo.touched" >
                         <small>  Room Number is required!</small>
                       </span>
                     </div>
                     <div class="form-group mb-3">
                       <label >Price :</label>
-                      <input type="text" class="form-control" [(ngModel)]="room.Price" formControlName="Price">
-                      <span class="error" *ngIf="validation.Price.invalid && validation.Price.touched" >
+                      <input type="text" class="form-control" [(ngModel)]="room.price" formControlName="price">
+                      <span class="error" *ngIf="validation.price.invalid && validation.price.touched" >
                         <small>Price is required!</small> 
                       </span>
                     </div>
                     <div class="form-group mb-3">
                       <label>Room Status :</label>
-                      <input type="text" class="form-control" [(ngModel)]="room.RoomStatus" formControlName="RoomStatus" >
-                      <span class="error" *ngIf="validation.RoomStatus.invalid && validation.RoomStatus.touched" >
+                      <input type="text" class="form-control" [(ngModel)]="room.roomStatus" formControlName="roomStatus" >
+                      <span class="error" *ngIf="validation.roomStatus.invalid && validation.roomStatus.touched" >
                         <small>Room Status is required!</small>
                       </span>
                     </div> 
                     <div class="form-group mb-3">
                       <label>Room Type Number :</label>
-                      <input type="text" class="form-control" [(ngModel)]="room.RoomTypeId" formControlName="RoomTypeId" >
-                      <span class="error" *ngIf="validation.RoomTypeId.invalid && validation.RoomTypeId.touched" >
+                      <input type="text" class="form-control" [(ngModel)]="room.roomTypeId" formControlName="roomTypeId" >
+                      <span class="error" *ngIf="validation.roomTypeId.invalid && validation.roomTypeId.touched" >
                         <small>Room Type Number is required!</small>
                       </span>
                     </div> 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" [(ngModel)]="room.IsActive" formControlName="IsActive">
+                      <input class="form-check-input" type="checkbox" [(ngModel)]="room.isActive" formControlName="isActive">
                       <label class="form-check-label" for="gridCheck">
                         Is active?
                       </label>

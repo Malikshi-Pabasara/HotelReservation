@@ -1,9 +1,9 @@
 export interface Guest { //Model
   id: string;
-  Name: string;
-  PhoneNo: string;
-  DateOfBirth: string;
-  Email: string;
-  IdNo: string;
-  IsActive: boolean;
+  name: string;
+  phoneNo: string;
+  dateOfBirth: string;
+  email: string;
+  idNo: string;
+  isActive: boolean;
 }

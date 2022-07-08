@@ -12,13 +12,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link deactive"  ></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" routerLink="/reservation" >Reservation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link deactive" routerLink="/guest" >Guest</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link deactive" aria-current="page" routerLink="/roomtype">Room</a>
+                    <a class="nav-link deactive" routerLink="/dashboard" >Dash-Board</a>
                 </li>
             </ul>
             <img src="assets/img/f.jpg" alt="Avatar" >
@@ -67,17 +67,17 @@
             
             <tbody>
                 <tr *ngFor = "let reservation of reservations | filter:searchText | paginate: {itemsPerPage : 5, currentPage:page};" >
-                    <td data-label="Reservation No" > <span>{{ reservation.ReservationNo }}</span></td>
-                    <td data-label="Guest Name" > <span>{{ reservation.GuestName }}</span></td>
-                    <td data-label="Guest Name" > <span>{{ reservation.GuestEmail }}</span></td>
-                    <td data-label="Room Id" ><span>{{ reservation.RoomNo }}</span></td>
-                    <td data-label="Arrival Date" ><span>{{ reservation.ArrivalDate | date: 'dd/MMM/yy'}}</span></td>
-                    <td data-label="Departure Date" ><span>{{ reservation.DepartureDate | date: 'dd/MMM/yy' }}</span></td>
-                    <td data-label="Notes" ><span>{{ reservation.Notes }}</span></td>
-                    <td data-label="Status" ><span>{{ reservation.Status }}</span></td>
+                    <td data-label="Reservation No" > <span>{{ reservation.reservationNo }}</span></td>
+                    <td data-label="Guest Name" > <span>{{ reservation.guestName }}</span></td>
+                    <td data-label="Guest Name" > <span>{{ reservation.guestEmail }}</span></td>
+                    <td data-label="Room Id" ><span>{{ reservation.roomNo }}</span></td>
+                    <td data-label="Arrival Date" ><span>{{ reservation.arrivalDate | date: 'dd/MMM/yy'}}</span></td>
+                    <td data-label="Departure Date" ><span>{{ reservation.departureDate | date: 'dd/MMM/yy' }}</span></td>
+                    <td data-label="Notes" ><span>{{ reservation.notes }}</span></td>
+                    <td data-label="Status" ><span>{{ reservation.status }}</span></td>
                     <td data-label="Action" ><span>
-                        <mat-icon matTooltip="Check In" (click)="checkIn(reservation.id)" [ngClass]="reservation.Status == 'Confirmed' ? 'availableIcon' : 'disable'"  >input</mat-icon>
-                        <mat-icon matTooltip="Check Out" (click)="open(checkOutModal)"  [ngClass]="reservation.Status == 'Checked In' ? 'availableIcon' : 'disable'">check_circle_outline</mat-icon>
+                        <mat-icon matTooltip="Check In" (click)="checkIn(reservation.orderId)" [ngClass]="reservation.status == 'Confirmed' ? 'availableIcon' : 'disable'"  >input</mat-icon>
+                        <mat-icon matTooltip="Check Out" (click)="open(checkOutModal)"  [ngClass]="reservation.status == 'Checked In' ? 'availableIcon' : 'disable'">check_circle_outline</mat-icon>
 
                         <!--Check Out Modal -->
                         <ng-template #checkOutModal let-modal>  
@@ -87,15 +87,15 @@
                                 <form [formGroup]="Reservationform">
                                     <div class="form-group mb-3 ">
                                         <label>Reservation No :</label>
-                                        <input type="text" [readonly]="disableMessage" [(ngModel)]="reservation.ReservationNo" class="form-control" formControlName="ReservationNo">     
+                                        <input type="text" [readonly]="disableMessage" [(ngModel)]="reservation.reservationNo" class="form-control" formControlName="reservationNo">     
                                     </div>
                                     <div class="form-group mb-3 form-row">
                                         <label>Arrival Date :</label>
-                                        <input type="date" class="form-control" [(ngModel)]="reservation.ArrivalDate" formControlName="ArrivalDate" >
+                                        <input type="date" class="form-control" [(ngModel)]="reservation.arrivalDate" formControlName="arrivalDate" >
                                     </div>
                                     <div class="form-group mb-3 form-row middle">
                                         <label>Departure Date :</label>
-                                        <input type="date" class="form-control" [(ngModel)]="reservation.DepartureDate" formControlName="DepartureDate">
+                                        <input type="date" class="form-control" [(ngModel)]="reservation.departureDate" formControlName="departureDate">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label>Total Charge :</label>
@@ -113,7 +113,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button id="Cancel" type="button" class="btn btn-outline-dark" (click)="cancel()"  (click)="modal.close('Save click')">Cancel</button>
-                                <button id="btn" type="button" class="btn btn-outline-dark" (click)="cancel()" (click)="checkOut(reservation.id)" (click)="modal.close('Save click')">Save</button> 
+                                <button id="btn" type="button" class="btn btn-outline-dark" (click)="cancel()" (click)="checkOut(reservation.orderId)" (click)="modal.close('Save click')">Save</button> 
                             </div>
                         </ng-template>
 
@@ -127,49 +127,49 @@
                                 <form [formGroup]="Reservationform">
                                     <div class="form-group mb-3 form-row">
                                         <label>Reservation No :</label>
-                                        <input type="text" [readonly]="disableMessage" [(ngModel)]="reservation.ReservationNo" class="form-control" formControlName="ReservationNo">     
+                                        <input type="text" [readonly]="disableMessage" [(ngModel)]="reservation.reservationNo" class="form-control" formControlName="reservationNo">     
                                     </div>
                                     <div class="form-group mb-3 form-row middle">
                                         <label>Status :</label>
-                                        <input type="text" [readonly]="disableMessage" [(ngModel)]="reservation.Status" class="form-control" formControlName="Status">     
+                                        <input type="text" [readonly]="disableMessage" [(ngModel)]="reservation.status" class="form-control" formControlName="status">     
                                     </div>
                                     <div class="form-group form-row mb-3">
                                         <label>Guest Name :</label>
-                                        <input type="text" required  [(ngModel)]="reservation.GuestId" class="form-control" formControlName="GuestId">
-                                        <span class="error" *ngIf="validation.GuestId.invalid && validation.GuestId.touched" >
+                                        <input type="text" required  [(ngModel)]="reservation.guestId" class="form-control" formControlName="guestId">
+                                        <span class="error" *ngIf="validation.guestId.invalid && validation.guestId.touched" >
                                             <small>  Guest Id is required!</small>
                                         </span>
                                     </div>
                                     <div class="form-group mb-3 form-row middle">
                                         <label>Room Id :</label>
-                                        <input type="text" [(ngModel)]="reservation.RoomId" class="form-control" formControlName="RoomId">
-                                        <span class="error" *ngIf="validation.RoomId.invalid && validation.RoomId.touched" >
+                                        <input type="text" [(ngModel)]="reservation.roomId" class="form-control" formControlName="roomId">
+                                        <span class="error" *ngIf="validation.roomId.invalid && validation.roomId.touched" >
                                             <small>Room Id is required!</small> 
                                         </span>
                                     </div>
                                     <div class="form-group mb-3 form-row">
                                         <label>Arrival Date :</label>
-                                        <input type="date" class="form-control" [(ngModel)]="reservation.ArrivalDate" formControlName="ArrivalDate" >
-                                        <span class="error" *ngIf="validation.ArrivalDate.invalid && validation.ArrivalDate.touched" >
+                                        <input type="date" class="form-control" [(ngModel)]="reservation.arrivalDate" formControlName="arrivalDate" >
+                                        <span class="error" *ngIf="validation.arrivalDate.invalid && validation.arrivalDate.touched" >
                                             <small>Arrival Date is required!</small>
                                         </span>
                                     </div>
                                     <div class="form-group mb-3 form-row middle">
                                         <label>Departure Date :</label>
-                                        <input type="date" class="form-control" [(ngModel)]="reservation.DepartureDate" formControlName="DepartureDate">
-                                        <span class="error" *ngIf="validation.DepartureDate.invalid && validation.DepartureDate.touched" >
+                                        <input type="date" class="form-control" [(ngModel)]="reservation.departureDate" formControlName="departureDate">
+                                        <span class="error" *ngIf="validation.departureDate.invalid && validation.departureDate.touched" >
                                             <small>Departure Date is required!</small> 
                                         </span>
                                     </div>
                                     <div class="form-group mb-3 " >
                                         <label>Notes :</label>
-                                        <input type="text" class="form-control" [(ngModel)]="reservation.Notes" formControlName="Notes">    
+                                        <input type="text" class="form-control" [(ngModel)]="reservation.notes" formControlName="notes">    
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button id="Cancel" type="button" class="btn btn-outline-dark" (click)="cancel()"  (click)="modal.close('Save click')">Cancel</button>
-                                <button id="btn" type="button" [disabled]="Reservationform.invalid" class="btn btn-outline-dark" (click)="UpdateGuest(reservation.id)" (click)="modal.close('Save click')">Update</button> 
+                                <button id="btn" type="button" [disabled]="Reservationform.invalid" class="btn btn-outline-dark" (click)="UpdateGuest(reservation.orderId)" (click)="modal.close('Save click')">Update</button> 
                             </div>
                         </ng-template>
                 
@@ -187,7 +187,7 @@
                             Are you sure to delete this Reservation ?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-dark" (click)="deleteRow(reservation.id)" (click)="modal.close('Delete click')">Delete</button>
+                            <button type="button" class="btn btn-outline-dark" (click)="deleteRow(reservation.orderId)" (click)="modal.close('Delete click')">Delete</button>
                         </div>
                         </ng-template>
                     </span>

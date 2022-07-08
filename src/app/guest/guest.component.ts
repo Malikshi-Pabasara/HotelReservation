@@ -26,12 +26,12 @@ export class GuestComponent implements OnInit {
   ) {
     this.Guestform = this.fb.group({
       id: new FormControl(''),
-      Name: new FormControl('', Validators.required),
-      PhoneNo: new FormControl('',[ Validators.required, Validators.maxLength(10)]), 
-      DateOfBirth: new FormControl('', Validators.required),
-      IdNo: new FormControl('' , [ Validators.required, Validators.maxLength(10)]), 
-      Email: new FormControl('', [Validators.required, Validators.email]),
-      IsActive: new FormControl(''),
+      name: new FormControl('', Validators.required),
+      phoneNo: new FormControl('',[ Validators.required, Validators.maxLength(10)]), 
+      dateOfBirth: new FormControl('', Validators.required),
+      idNo: new FormControl('' , [ Validators.required, Validators.maxLength(10)]), 
+      email: new FormControl('', [Validators.required, Validators.email]),
+      isActive: new FormControl(''),
     });
   }
 
@@ -60,6 +60,9 @@ export class GuestComponent implements OnInit {
   }
       
   submitForm() {
+    if(this.Guestform.value.isActive == null){
+      this.Guestform.value.isActive = false;
+    }
     this.guestService.submitForm(this.Guestform.value).subscribe(
       (response) => {
         this.guestService.getAllContacts().subscribe(
@@ -76,6 +79,9 @@ export class GuestComponent implements OnInit {
   }
 
   updateGuest(id:string) {
+    if(this.Guestform.value.isActive == "" || this.Guestform.value.isActive == null){
+      this.Guestform.value.isActive = false;
+    }
     this.guestService.updateGuest(id,this.Guestform.value).subscribe((response) => {
         this.guestService.getAllContacts().subscribe(
           (response) => {

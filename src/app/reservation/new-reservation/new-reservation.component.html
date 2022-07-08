@@ -15,10 +15,7 @@
                     <a class="nav-link active" routerLink="/reservation" >Reservation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link deactive" routerLink="/guest" >Guest</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link deactive" aria-current="page" routerLink="/roomtype">Room</a>
+                    <a class="nav-link deactive" routerLink="/dashboard" >Dash-Board</a>
                 </li>
             </ul>
             <img src="assets/img/f.jpg" alt="Avatar" >
@@ -43,7 +40,7 @@
 <div class="card reservationNoCard">
     <form class="reservationNo" [formGroup]="Reservationform">
         Reservation No :
-        <input type="text" class="form-control" [readonly]="true" [(ngModel)]="newReservationNo" formControlName="ReservationNo" >
+        <input type="text" class="form-control" [readonly]="true" [(ngModel)]="newReservationNo" formControlName="reservationNo" >
     </form>
 </div>
 <br>
@@ -55,19 +52,19 @@
                 <form [formGroup]="Reservationform">
                     <div class="form-group mb-3">
                         <label>Guest Name :</label>
-                        <input type="text" class="form-control" [matAutocomplete]="auto" formControlName="GuestId">
+                        <input type="text" class="form-control" [matAutocomplete]="auto" formControlName="guestId">
                         <mat-autocomplete autoActiveFirstOption  #auto="matAutocomplete" [displayWith]="displayGuestName.bind(this)">
                             <mat-option  *ngFor="let guest of guests" [value]="guest.id">
-                                {{guest.Name}}
+                                {{guest.name}}
                             </mat-option>
                         </mat-autocomplete>
-                        <span class="error" *ngIf="validation.GuestId.invalid && validation.GuestId.touched" >
+                        <span class="error" *ngIf="validation.guestId.invalid && validation.guestId.touched" >
                             <small>  Guest Name is required!</small>
                         </span>
                     </div>
                     <div class="form-group mb-3 form-row leftcol">
                       <label>Adults :</label>
-                      <input type="text" class="form-control" formControlName="Adults">
+                      <input type="text" class="form-control" formControlName="adults">
                     </div>
                     <div class="form-group mb-3 form-row middlecol">
                       <label>child :</label>
@@ -75,11 +72,11 @@
                     </div>
                     <div class="form-group mb-3 form-row rightcol">
                       <label> Number of night :</label>
-                      <input type="text" class="form-control" formControlName="NumNight">
+                      <input type="text" class="form-control" formControlName="numNight">
                     </div>
                     <div class="form-group mb-3 " >
                       <label>Note :</label>
-                      <textarea type="email" class="form-control" id="inputEmail" formControlName="Notes"></textarea>
+                      <textarea type="email" class="form-control" id="inputEmail" formControlName="notes"></textarea>
                     </div>
                     <br>
                 </form> 
@@ -91,47 +88,47 @@
                 <form [formGroup]="Reservationform">
                     <div class="form-group mb-3 form-row Left">
                         <label>Room No :</label>
-                        <input type="text" class="form-control" [matAutocomplete]="autoRoomNo" formControlName="RoomId">
+                        <input type="text" class="form-control" [matAutocomplete]="autoRoomNo" formControlName="roomId">
                         <mat-autocomplete  #autoRoomNo="matAutocomplete" [displayWith]="displayRoomNo.bind(this)">
                             <mat-option *ngFor="let room of rooms" [value]="room.id">
-                                {{room.RoomNo}}
+                                {{room.roomNo}}
                             </mat-option>
                         </mat-autocomplete>
-                        <span class="error" *ngIf="validation.RoomId.invalid && validation.RoomId.touched" >
+                        <span class="error" *ngIf="validation.roomId.invalid && validation.roomId.touched" >
                             <small>Room Id is required!</small> 
                         </span>
                     </div>
                     <div class="form-group mb-3 form-row middle">
                         <label>Status :</label>
-                        <select type="text" class="form-control" formControlName="Status" >
+                        <select type="text" class="form-control" formControlName="status" >
                         <option value="Confirmed">Confirmed</option>
                         <option value="Checked In">Checked In</option>
                         </select>
-                        <span class="error" *ngIf="validation.Status.invalid && validation.Status.touched" >
+                        <span class="error" *ngIf="validation.status.invalid && validation.status.touched" >
                             <small>Status is required!</small> 
                         </span>
                     </div>
                     <div class="form-group mb-3 form-row Left">
                         <label>Arrival Date :</label>
-                        <input type="date" class="form-control" formControlName="ArrivalDate" >
-                        <span class="error" *ngIf="validation.ArrivalDate.invalid && validation.ArrivalDate.touched" >
+                        <input type="date" class="form-control" formControlName="arrivalDate" >
+                        <span class="error" *ngIf="validation.arrivalDate.invalid && validation.arrivalDate.touched" >
                             <small>Arrival Date is required!</small>
                         </span>
                     </div>
                     <div class="form-group mb-3 form-row middle">
                         <label>Arrival Time :</label>
-                        <input type="time" class="form-control" formControlName="ArrivalTime">
+                        <input type="time" class="form-control" formControlName="arrivalTime">
                     </div>
                     <div class="form-group mb-3 form-row Left lastRow">
                         <label>Departure Date :</label>
-                        <input type="date" class="form-control" formControlName="DepartureDate">
-                        <span class="error" *ngIf="validation.DepartureDate.invalid && validation.DepartureDate.touched" >
+                        <input type="date" class="form-control" formControlName="departureDate">
+                        <span class="error" *ngIf="validation.departureDate.invalid && validation.departureDate.touched" >
                             <small>Departure Date is required!</small> 
                         </span>
                     </div>
                     <div class="form-group mb-3 form-row middle lastRow">
                         <label>Departure Time :</label>
-                        <input type="time" class="form-control" formControlName="DepartureTime" >
+                        <input type="time" class="form-control" formControlName="departureTime" >
                     </div>
                     <br><br>
                 </form>

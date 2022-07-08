@@ -32,14 +32,14 @@ export class ReservationComponent implements OnInit {
     public fb: FormBuilder
   ) {
     this.Reservationform = this.fb.group({
-      id: new FormControl(''),
-      ReservationNo: new FormControl(''),
-      GuestId: new FormControl('',Validators.required), 
-      RoomId: new FormControl('', Validators.required),
-      ArrivalDate: new FormControl('' , Validators.required), 
-      DepartureDate: new FormControl('', Validators.required),
-      Notes: new FormControl(''),
-      Status: new FormControl('')
+      orderId: new FormControl(''),
+      reservationNo: new FormControl(''),
+      guestId: new FormControl('',Validators.required), 
+      roomId: new FormControl('', Validators.required),
+      arrivalDate: new FormControl('' , Validators.required), 
+      departureDate: new FormControl('', Validators.required),
+      notes: new FormControl(''),
+      status: new FormControl('')
     });
   }
   get validation() {
@@ -57,12 +57,12 @@ export class ReservationComponent implements OnInit {
       this.guests = response.guestResponse;
       this.rooms = response.roomResponse;
       this.reservations = response.reservationResponse.map(reservation => {
-        const room = this.rooms.find(r => r.id == reservation.RoomId);
-        reservation.RoomNo = room != undefined ? room.RoomNo : 'NA';
-        const email = this.guests.find(e => e.id == reservation.GuestId);
-        reservation.GuestEmail = email != undefined ? email.Email : 'NA';
-        const guest = this.guests.find(g => g.id == reservation.GuestId);
-        reservation.GuestName = guest != undefined ? guest.Name : 'NA';
+        const room = this.rooms.find(r => r.id == reservation.roomId);
+        reservation.roomNo = room != undefined ? room.roomNo : 'NA';
+        const email = this.guests.find(e => e.id == reservation.guestId);
+        reservation.guestEmail = email != undefined ? email.email : 'NA';
+        const guest = this.guests.find(g => g.id == reservation.guestId);
+        reservation.guestName = guest != undefined ? guest.name : 'NA';
         return reservation;
       });
     });
@@ -91,6 +91,7 @@ export class ReservationComponent implements OnInit {
   }
 
   UpdateGuest(id:string){
+    debugger
     this.reservationService.UpdateOrder(id,this.Reservationform.value).subscribe((response) => {
        this.ngOnInit();
       },
@@ -122,9 +123,9 @@ export class ReservationComponent implements OnInit {
   }
 
   checkIn(id:string){
-    const reservation = this.reservations.find(r => r.id == id);
+    const reservation = this.reservations.find(r => r.orderId == id);
     if(reservation != undefined){
-      reservation.Status= "Checked In";
+      reservation.status= "Checked In";
       this.reservationService.UpdateOrder(id,reservation).subscribe((response) => {
         this.ngOnInit();
       },
@@ -132,9 +133,9 @@ export class ReservationComponent implements OnInit {
     )}
   }
   checkOut(id:string){
-    const reservation = this.reservations.find(r => r.id == id);
+    const reservation = this.reservations.find(r => r.orderId == id);
     if(reservation != undefined){
-      reservation.Status= "Checked Out";
+      reservation.status= "Checked Out";
       this.reservationService.UpdateOrder(id,reservation).subscribe((response) => {
         this.ngOnInit();
       },

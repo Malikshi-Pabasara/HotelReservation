@@ -31,11 +31,11 @@ export class RoomComponent implements OnInit {
   ) {
     this.Roomform = this.fb.group({
       id: new FormControl(''),
-      RoomNo: new FormControl('', Validators.required),
-      Price: new FormControl('', Validators.required), 
-      RoomStatus: new FormControl('', Validators.required),
-      RoomTypeId: new FormControl('', Validators.required),
-      IsActive: new FormControl(''),
+      roomNo: new FormControl('', Validators.required),
+      price: new FormControl('', Validators.required), 
+      roomStatus: new FormControl('', Validators.required),
+      roomTypeId: new FormControl('', Validators.required),
+      isActive: new FormControl(''),
     })
   }
 
@@ -67,6 +67,9 @@ export class RoomComponent implements OnInit {
   } 
 
   submitForm() {
+    if(this.Roomform.value.isActive == "" || this.Roomform.value.isActive == null){
+      this.Roomform.value.isActive = false;
+    }
     this.roomService.submitForm(this.Roomform.value).subscribe(
       (response) => {
         this.roomService.getAllRooms().subscribe(
@@ -82,6 +85,9 @@ export class RoomComponent implements OnInit {
   }
 
   UpdateRoom(id:string) {
+    if(this.Roomform.value.isActive == "" || this.Roomform.value.isActive == null){
+      this.Roomform.value.isActive = false;
+    }
     this.roomService.UpdateRoom(id,this.Roomform.value).subscribe((response) => {
         this.roomService.getAllRooms().subscribe(
           (response) => {

@@ -26,6 +26,10 @@ import { RoomtypeComponent } from './roomtype/roomtype.component';
 import { NewReservationComponent } from './reservation/new-reservation/new-reservation.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { InventoryComponent } from './inventory/inventory.component';
+import { HskpManagerComponent } from './hskp-manager/hskp-manager.component';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,10 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     AuthComponent,
     RoomtypeComponent,
     NewReservationComponent,
+    DashboardComponent,
+    InventoryComponent,
+    HskpManagerComponent,
+    ReportComponent,
     
   ],
   imports: [

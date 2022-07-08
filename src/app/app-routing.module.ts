@@ -6,6 +6,10 @@ import { NewReservationComponent } from './reservation/new-reservation/new-reser
 import { ReservationComponent } from './reservation/reservation.component';
 import { RoomComponent } from './roomtype/room/room.component';
 import { RoomtypeComponent } from './roomtype/roomtype.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { InventoryComponent } from './inventory/inventory.component';
+import { HskpManagerComponent } from './hskp-manager/hskp-manager.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -13,7 +17,11 @@ const routes: Routes = [
   {path:'reservation', component:ReservationComponent},
   {path:'room', component:RoomComponent},
   {path:'roomtype', component:RoomtypeComponent},
-  {path: 'newreservation', component:NewReservationComponent}
+  {path: 'newreservation', component:NewReservationComponent},
+  {path: 'dashboard', component:DashboardComponent},
+  {path: 'inventory', component:InventoryComponent},
+  {path: 'hskp', component:HskpManagerComponent},
+  {path: 'report', component:ReportComponent},
 ];
 
 @NgModule({

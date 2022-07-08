@@ -32,35 +32,35 @@ export class NewReservationComponent implements OnInit {
   ) {
     this.Reservationform = this.fb.group({
       id: new FormControl(''),
-      ReservationNo: new FormControl(''),
-      GuestId: new FormControl('',Validators.required), 
-      RoomId: new FormControl('', Validators.required),
-      ArrivalDate: new FormControl('' , Validators.required), 
-      DepartureDate: new FormControl('', Validators.required),
-      Notes: new FormControl(''),
-      DepartureTime: new FormControl(''),
-      Status: new FormControl('', Validators.required),
-      ArrivalTime: new FormControl(''),
-      NumNight: new FormControl(''),
+      reservationNo: new FormControl(''),
+      guestId: new FormControl('',Validators.required), 
+      roomId: new FormControl('', Validators.required),
+      arrivalDate: new FormControl('' , Validators.required), 
+      departureDate: new FormControl('', Validators.required),
+      notes: new FormControl(''),
+      departureTime: new FormControl(''),
+      status: new FormControl('', Validators.required),
+      arrivalTime: new FormControl(''),
+      numNight: new FormControl(''),
       child: new FormControl(''),
-      Adults: new FormControl(''),
+      adults: new FormControl(''),
     }),
     this.Guestform = this.fb.group({
       id: new FormControl(''),
-      Name: new FormControl(''),
-      PhoneNo: new FormControl(''), 
-      DateOfBirth: new FormControl(''),
-      IdNo: new FormControl(''), 
-      Email: new FormControl(''),
-      IsActive: new FormControl(''),
+      name: new FormControl(''),
+      phoneNo: new FormControl(''), 
+      dateOfBirth: new FormControl(''),
+      idNo: new FormControl(''), 
+      email: new FormControl(''),
+      isActive: new FormControl(''),
     }),
     this.Roomform = this.fb.group({
       id: new FormControl(''),
-      RoomNo: new FormControl(''),
-      Price: new FormControl(''), 
-      RoomStatus: new FormControl(''),
-      RoomTypeId: new FormControl(''),
-      IsActive: new FormControl(''),
+      roomNo: new FormControl(''),
+      price: new FormControl(''), 
+      roomStatus: new FormControl(''),
+      roomTypeId: new FormControl(''),
+      isActive: new FormControl(''),
     })
   }
 
@@ -77,8 +77,8 @@ export class NewReservationComponent implements OnInit {
     });
     this.reservationService.getOrders().subscribe((response) => {
       this.reservations = response;
-      const reservation = this.reservations.sort((a, b) => b.ReservationNo.localeCompare(a.ReservationNo));
-      const lastReservationNo = reservation[0].ReservationNo;
+      const reservation = this.reservations.sort((a, b) => b.reservationNo.localeCompare(a.reservationNo));
+      const lastReservationNo = reservation[0].reservationNo;
       const split = lastReservationNo.split(/['OB']/);
       this.newReservationNo = 'OB'+('00000'+(Number(split[2])+1)).slice(-6);
     });
@@ -86,11 +86,11 @@ export class NewReservationComponent implements OnInit {
 
   displayGuestName(id?: any) {
     const guest = this.guests.find(g => g.id == id);
-    return id && guest ? guest.Name : '';
+    return id && guest ? guest.name : '';
   }
   displayRoomNo(id?: any) {
     const room = this.rooms.find(r => r.id == id);
-    return id && room ? room.RoomNo : '';
+    return id && room ? room.roomNo : '';
   }
   submitForm() {
     this.reservationService.submitForm(this.Reservationform.value).subscribe(
