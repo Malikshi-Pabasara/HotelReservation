@@ -1,0 +1,244 @@
+
+@media (max-width: 399px) and (min-width: 100px) {
+    .samuelZeller {
+        height: 150px;
+    }
+
+    .illustrationAnimation {
+        height: 150px;
+    }
+}
+h4{
+  margin-top: 0.6em;
+  margin-bottom: 0;
+  padding-bottom: 16px;
+  color: rgb(2, 2, 44);
+  size: large;
+  font-weight: bold;
+}
+@media (max-width: 600px) and (min-width: 400px) {
+    .samuelZeller {
+        height: 250px;
+    }
+
+    .illustrationAnimation {
+        height: 250px;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+    .samuelZeller {
+        height: 350px;
+    }
+
+    .illustrationAnimation {
+        height: 350px;
+    }
+}
+.nav-link.color-white {
+    color: white;
+    cursor: pointer;
+}
+.nav-link:hover {
+    color: white;
+}
+
+.navbarList {
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 0;
+    position: relative;
+    top: 12%;
+}
+
+.navbarListItem {
+    padding: 0px 25px 0px 25px;
+    line-height: 32px;
+}
+
+.navbarListItem :hover {
+    color: rgb(158, 158, 158);
+}
+
+.container.main-container {
+        margin-top: 100px;
+  }
+
+  ._content {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-out;
+    border-radius: 0.75em;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+    width: 170px;
+    margin: 8px 18px;
+}
+.container.starter-template.main-topic {
+  color: Grey;
+}
+
+:host {
+    display: flex !important;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.z-Search > .c-Form > ._field :hover {
+    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.2);
+    border: 0px solid #5f6062;
+}
+
+.z-Search > .c-Form > ._field :focus {
+    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.2);
+    border: 0px solid #5f6062;
+}
+
+.c-Pill {
+    padding: 0.5em;
+}
+
+.c-Pill._content {
+  font-weight: normal;
+  text-align: center;
+}
+.c-Pill._pill {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-out;
+}
+
+:host {
+    display: block;
+    background: Grey4;
+}
+
+.w-Flex.z-Empty._checkInColumn {
+        border-right: 1px solid Grey3;
+}
+.checkBtn {
+    cursor: pointer;
+    width: 96px;
+    text-align: center;
+}
+
+._newReservationColumn {
+    margin-left: 7.4%;
+}
+
+/* loading animation */
+.lds-spinner {
+    color: official;
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin-top: 0.6em;
+    margin-bottom: 0.5rem;
+}
+.lds-spinner.mini {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    left: -18%;
+}
+.lds-spinner div {
+    transform-origin: 32px 32px;
+    animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner.mini div {
+    transform-origin: 29.5px 9px;
+}
+
+.lds-spinner div:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 29px;
+    width: 5px;
+    height: 14px;
+    border-radius: 20%;
+    background: Blue;
+}
+.lds-spinner.mini div:after {
+    width: 1px;
+    height: 3px;
+}
+.lds-spinner div:nth-child(1) {
+    transform: rotate(0deg);
+    animation-delay: -1.1s;
+}
+.lds-spinner div:nth-child(2) {
+    transform: rotate(30deg);
+    animation-delay: -1s;
+}
+.lds-spinner div:nth-child(3) {
+    transform: rotate(60deg);
+    animation-delay: -0.9s;
+}
+.lds-spinner div:nth-child(4) {
+    transform: rotate(90deg);
+    animation-delay: -0.8s;
+}
+.lds-spinner div:nth-child(5) {
+    transform: rotate(120deg);
+    animation-delay: -0.7s;
+}
+.lds-spinner div:nth-child(6) {
+    transform: rotate(150deg);
+    animation-delay: -0.6s;
+}
+.lds-spinner div:nth-child(7) {
+    transform: rotate(180deg);
+    animation-delay: -0.5s;
+}
+.lds-spinner div:nth-child(8) {
+    transform: rotate(210deg);
+    animation-delay: -0.4s;
+}
+.lds-spinner div:nth-child(9) {
+    transform: rotate(240deg);
+    animation-delay: -0.3s;
+}
+.lds-spinner div:nth-child(10) {
+    transform: rotate(270deg);
+    animation-delay: -0.2s;
+}
+.lds-spinner div:nth-child(11) {
+    transform: rotate(300deg);
+    animation-delay: -0.1s;
+}
+.lds-spinner div:nth-child(12) {
+    transform: rotate(330deg);
+    animation-delay: 0s;
+}
+@keyframes lds-spinner {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.header {
+  font-family: Sarpanch;
+  text-align: center;
+  color: rgb(255, 100, 0);
+  -webkit-text-stroke: 1px #041A32;
+  font-size: 35px;
+}
+.end{
+    justify-content: right;
+}
+.hpos-img {
+    width: 23%;
+    margin-top: 12px;
+    margin-bottom: 25px;
+}
+.snc-img {
+    margin-bottom: 15px;
+    margin-top: 12px;
+}

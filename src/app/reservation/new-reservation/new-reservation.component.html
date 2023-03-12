@@ -1,0 +1,143 @@
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light firstNavBar"  >
+    <div class="container-fluid" >
+        <div class= "header">
+            <h1 class= "header">Prism System </h1>
+        </div>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/reservation" >Reservation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link deactive" routerLink="/dashboard" >Dash-Board</a>
+                </li>
+            </ul>
+            <img src="assets/img/f.jpg" alt="Avatar" >
+        </div>      
+    </div>
+</nav>
+
+<!-- Nav Bar2 -->
+<nav class="navbar navbar-expand-lg secondNavBar">
+    <div class="container-fluid">
+        <div class="bar">
+            <img class="img" src="assets/img/reservation.jpg">
+            <h2 class="pagename" ><b>Reservation </b></h2>
+        </div>
+
+        <div class="input-group rounded search">
+            <button class="btn reservationListBtn" routerLink="/reservation" > Reservation List </button>    
+        </div>
+    </div>
+</nav>
+<br>
+<div class="card reservationNoCard">
+    <form class="reservationNo" [formGroup]="Reservationform">
+        Reservation No :
+        <input type="text" class="form-control" [readonly]="true" [(ngModel)]="newReservationNo" formControlName="reservationNo" >
+    </form>
+</div>
+<br>
+<div class="container-fluid">
+    <div class="row" >
+        <div class="col-md-6 no-float" id="leftCol">
+            <div class="card card1" >
+                <h3><b>Guest Details</b></h3>
+                <form [formGroup]="Reservationform">
+                    <div class="form-group mb-3">
+                        <label>Guest Name :</label>
+                        <input type="text" class="form-control" [matAutocomplete]="auto" formControlName="guestId">
+                        <mat-autocomplete autoActiveFirstOption  #auto="matAutocomplete" [displayWith]="displayGuestName.bind(this)">
+                            <mat-option  *ngFor="let guest of guests" [value]="guest.id">
+                                {{guest.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <span class="error" *ngIf="validation.guestId.invalid && validation.guestId.touched" >
+                            <small>  Guest Name is required!</small>
+                        </span>
+                    </div>
+                    <div class="form-group mb-3 form-row leftcol">
+                      <label>Adults :</label>
+                      <input type="text" class="form-control" formControlName="adults">
+                    </div>
+                    <div class="form-group mb-3 form-row middlecol">
+                      <label>child :</label>
+                      <input type="text " class="form-control" formControlName="child">
+                    </div>
+                    <div class="form-group mb-3 form-row rightcol">
+                      <label> Number of night :</label>
+                      <input type="text" class="form-control" formControlName="numNight">
+                    </div>
+                    <div class="form-group mb-3 " >
+                      <label>Note :</label>
+                      <textarea type="email" class="form-control" id="inputEmail" formControlName="notes"></textarea>
+                    </div>
+                    <br>
+                </form> 
+            </div>
+        </div>
+        <div class="col-md-6 no-float" id="rightCol">
+            <div class="card card2" >
+                <h3><b>Stay Details</b></h3>
+                <form [formGroup]="Reservationform">
+                    <div class="form-group mb-3 form-row Left">
+                        <label>Room No :</label>
+                        <input type="text" class="form-control" [matAutocomplete]="autoRoomNo" formControlName="roomId">
+                        <mat-autocomplete  #autoRoomNo="matAutocomplete" [displayWith]="displayRoomNo.bind(this)">
+                            <mat-option *ngFor="let room of rooms" [value]="room.id">
+                                {{room.roomNo}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <span class="error" *ngIf="validation.roomId.invalid && validation.roomId.touched" >
+                            <small>Room Id is required!</small> 
+                        </span>
+                    </div>
+                    <div class="form-group mb-3 form-row middle">
+                        <label>Status :</label>
+                        <select type="text" class="form-control" formControlName="status" >
+                        <option value="Confirmed">Confirmed</option>
+                        <option value="Checked In">Checked In</option>
+                        </select>
+                        <span class="error" *ngIf="validation.status.invalid && validation.status.touched" >
+                            <small>Status is required!</small> 
+                        </span>
+                    </div>
+                    <div class="form-group mb-3 form-row Left">
+                        <label>Arrival Date :</label>
+                        <input type="date" class="form-control" formControlName="arrivalDate" >
+                        <span class="error" *ngIf="validation.arrivalDate.invalid && validation.arrivalDate.touched" >
+                            <small>Arrival Date is required!</small>
+                        </span>
+                    </div>
+                    <div class="form-group mb-3 form-row middle">
+                        <label>Arrival Time :</label>
+                        <input type="time" class="form-control" formControlName="arrivalTime">
+                    </div>
+                    <div class="form-group mb-3 form-row Left lastRow">
+                        <label>Departure Date :</label>
+                        <input type="date" class="form-control" formControlName="departureDate">
+                        <span class="error" *ngIf="validation.departureDate.invalid && validation.departureDate.touched" >
+                            <small>Departure Date is required!</small> 
+                        </span>
+                    </div>
+                    <div class="form-group mb-3 form-row middle lastRow">
+                        <label>Departure Time :</label>
+                        <input type="time" class="form-control" formControlName="departureTime" >
+                    </div>
+                    <br><br>
+                </form>
+            </div>            
+        </div>
+    </div>
+    <mat-toolbar>
+        <span class="example-spacer"></span>
+        <button id="Cancel" type="button" class="btn button btn-outline-dark" (click)="cancel()" (click)="ngOnInit()" >Cancel</button>
+        <button id="btn" type="button" class="btn button btn-outline-dark" [disabled]="Reservationform.invalid" routerLink="/reservation" (click)="submitForm()" (click)="cancel()">Save</button>  
+    </mat-toolbar>
+</div>

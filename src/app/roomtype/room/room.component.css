@@ -1,0 +1,53 @@
+a:hover {
+  background-color: #07325f;
+}
+button {
+  background-color: white;
+  color: black;
+  border: none;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0%;
+}
+button:hover {
+  background-color: #07325f;
+  color: #fff;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+mat-toolbar mat-icon {
+  background-color: #000; 
+  color:#fff;
+}
+p mat-toolbar {
+  background-color: #fff;
+}
+bar {
+  display: table-cell;
+  vertical-align: middle;
+}
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+.card {
+  border: none;  
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2); 
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.deletebtn {
+  background-color: #B21313; 
+  color: #fff;
+}
+form input {
+  border-radius: 0;
+  outline: none;
+  border: 0;
+  color: #6C6969;
+  font-size: 14px;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+}
+textarea:focus, input:focus {
+  outline: none;
+}

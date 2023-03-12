@@ -1,0 +1,127 @@
+.header {
+  font-family: Sarpanch;
+  text-align: left;
+  color: rgb(255, 100, 0);
+  font-size: larger;
+  width: 65%;
+  display: table-cell;
+  vertical-align: middle;
+  background-color: #041A32;
+}
+.nav-link {
+  padding-right: 3rem !important;
+  font-weight: bold;
+}
+a:hover {
+  background-color: #07325f;
+}
+button {
+  background-color: white;
+  color: black;
+  border: none;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0%;
+}
+button:hover {
+  background-color: #07325f;
+}
+.example-spacer {
+  padding-left: 3rem !important;
+}
+.bar {
+  display: table-cell;
+  vertical-align: middle;
+}
+.reservationListBtn {
+  width: 150px;
+  color: #6C6969;
+  height: 40px;
+}
+form input ,form textarea, form select, select option {
+  border-radius: 0;
+  outline: none;
+  border: 0;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+  color: #6C6969;
+  font-size: 14px;
+}
+textarea:focus, input:focus ,select:focus , option:focus {
+  outline: none;
+  border: 0;
+}
+.card {
+  border: none;
+}
+.card1 {
+  margin-left: 50px;
+  width:80%;
+}
+.reservationNoCard {
+  margin-left: 60px;
+  width:80%;
+}
+.card2 {
+  width:90%;
+}
+.form-row {
+  display: inline-block;
+}
+.leftcol, .middlecol , .rightcol {
+  width: 158px;
+}
+.middlecol , .rightcol {
+  margin-left: 25px;
+}
+.middle {
+  margin-left: 25px;
+}
+textarea {
+  height: 70px;
+}
+.Left ,.middle {
+  width: 279px;
+}
+.lastRow {
+  margin-top: 10px;
+}
+.reservationNo {
+  text-align: 10px;
+  font-weight: bold;
+  color: #B21313;
+}
+.button {
+  width: 100PX;
+  display: inline-block;
+  margin-right: 15px;
+}
+.example-spacer {
+  flex:  1 1 auto;
+}
+mat-toolbar {
+  background-color: #fff;
+}
+@media (max-width : 1360px) {
+  .form-row , .Left , .middle , input {
+    width: 100%;
+  }
+  .middle , .middlecol , .rightcol {
+    margin-left: 0px;
+  }
+  .card1 {
+    margin-left: 0px;
+  }
+  .reservationNoCard {
+    margin-left: 10px;
+  }
+  .card {
+    width: 100%;
+  }
+}
+.reservationNoCard input {
+  width: 120px;
+  color: #B21313;
+  font-weight: bold;
+  display: inline;
+  background-color: #fff;
+  box-shadow: none;
+}
